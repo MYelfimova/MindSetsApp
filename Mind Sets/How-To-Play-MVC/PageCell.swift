@@ -10,6 +10,9 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
+    
+    // MARK: - Properties
+    
     var page: Page? {
         didSet{
             
@@ -17,15 +20,13 @@ class PageCell: UICollectionViewCell {
             myImageView.image = UIImage(named: unwrappedPage.image)
             
             let attributedText = NSMutableAttributedString(string: unwrappedPage.descriptionTitle, attributes:
-                [NSAttributedString.Key.font:UIFont.boldSystemFont(ofSize: 22)
-                // NSAttributedString.Key.paragraphStyle : NSTextAlignment.center
-            ])
+                                                            [NSAttributedString.Key.font: Constants.descriptionTitleFont
+                                                            ])
             
             attributedText.append(NSMutableAttributedString(string: "\n\(unwrappedPage.descriptionBody)", attributes:
-            [NSAttributedString.Key.font:UIFont.systemFont(ofSize: 18),
-             NSAttributedString.Key.foregroundColor : UIColor.gray
-             // NSAttributedString.Key.paragraphStyle : NSTextAlignment.natural
-            ]))
+                                                                [NSAttributedString.Key.font: Constants.descriptionFont,
+                                                                 NSAttributedString.Key.foregroundColor : UIColor.gray
+                                                                ]))
             
             descriptionTextView.attributedText = attributedText
             descriptionTextView.textAlignment = .center
@@ -34,17 +35,17 @@ class PageCell: UICollectionViewCell {
     
     let myImageView: UIImageView = {
         let imageView = UIImageView()
-        //enabling autolayout
         imageView.translatesAutoresizingMaskIntoConstraints = false
-
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     let titleTextView: UITextView = {
         let title = UITextView()
-        title.text = "How To Play"
-        title.font = UIFont.boldSystemFont(ofSize: 26)
+        title.backgroundColor = UIColor.white
+        title.text = Constants.rulesTitle
+        title.textColor = UIColor.black
+        title.font = Constants.titleFont
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textAlignment = .center
         title.isEditable = false
@@ -55,7 +56,7 @@ class PageCell: UICollectionViewCell {
     
     let descriptionTextView: UITextView = {
         let textView = UITextView()
-
+        textView.backgroundColor = UIColor.white
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
         textView.isEditable = false
@@ -65,42 +66,53 @@ class PageCell: UICollectionViewCell {
     }()
     
     
+    
+    // MARK: - Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
-        
     }
     
+    
+    // MARK: - Helpers
+    
     private func setupLayout() {
+        self.backgroundColor = UIColor.white
         
         let topImageContainerView = UIView()
-        addSubview(topImageContainerView)
-        addSubview(descriptionTextView)
-        
         topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
-        topImageContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
         
         topImageContainerView.addSubview(myImageView)
         topImageContainerView.addSubview(titleTextView)
-
-        titleTextView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1.0).isActive = true
-        titleTextView.leadingAnchor.constraint(equalTo: topImageContainerView.leadingAnchor).isActive = true
-        titleTextView.trailingAnchor.constraint(equalTo: topImageContainerView.trailingAnchor).isActive = true
-        titleTextView.bottomAnchor.constraint(equalTo: myImageView.topAnchor).isActive = true
-
-        myImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor).isActive = true
-        //myImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
-        myImageView.bottomAnchor.constraint(greaterThanOrEqualTo: topImageContainerView.bottomAnchor, constant: 8).isActive = true
-        myImageView.topAnchor.constraint(greaterThanOrEqualTo: titleTextView.bottomAnchor, constant: 8).isActive = true
-        myImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.7).isActive = true
-
-        descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 20).isActive = true
-        descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24).isActive = true
-        descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24).isActive = true
-        descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+        
+        self.addSubview(topImageContainerView)
+        self.addSubview(descriptionTextView)
+        
+        NSLayoutConstraint.activate([
+            topImageContainerView.topAnchor.constraint(equalTo: topAnchor),
+            topImageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            topImageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            topImageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5),
+            
+            titleTextView.topAnchor.constraint(equalToSystemSpacingBelow: safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
+            titleTextView.leadingAnchor.constraint(equalTo: topImageContainerView.leadingAnchor),
+            titleTextView.trailingAnchor.constraint(equalTo: topImageContainerView.trailingAnchor),
+            
+            //myImageView.centerXAnchor.constraint(equalTo: topImageContainerView.centerXAnchor),
+            myImageView.leadingAnchor.constraint(equalTo: topImageContainerView.leadingAnchor, constant: 10),
+            myImageView.trailingAnchor.constraint(equalTo: topImageContainerView.trailingAnchor, constant: -10),
+            myImageView.bottomAnchor.constraint(greaterThanOrEqualTo: topImageContainerView.bottomAnchor, constant: 8),
+            myImageView.topAnchor.constraint(greaterThanOrEqualTo: titleTextView.bottomAnchor, constant: 20),
+            myImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.7),
+            
+            descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor, constant: 20),
+            descriptionTextView.leftAnchor.constraint(equalTo: leftAnchor, constant: 24),
+            descriptionTextView.rightAnchor.constraint(equalTo: rightAnchor, constant: -24),
+            descriptionTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0)
+        ])
+        
+        
     }
     
     required init?(coder: NSCoder) {

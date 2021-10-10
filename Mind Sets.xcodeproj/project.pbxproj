@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47D86AE12712E5D900DE748A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE02712E5D900DE748A /* Colors.swift */; };
-		47D86AE32712E5E300DE748A /* Texts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE22712E5E300DE748A /* Texts.swift */; };
+		47D86AE32712E5E300DE748A /* Constats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE22712E5E300DE748A /* Constats.swift */; };
 		4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200A2459728C0009FC50 /* AppDelegate.swift */; };
 		4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200C2459728C0009FC50 /* SceneDelegate.swift */; };
 		4C03200F2459728C0009FC50 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200E2459728C0009FC50 /* GameScreenViewController.swift */; };
@@ -30,13 +30,12 @@
 		4C72F481248E9B6D0087312E /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F480248E9B6D0087312E /* SwipingController.swift */; };
 		4C72F483248E9BA40087312E /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F482248E9BA40087312E /* PageCell.swift */; };
 		4C72F485248E9BCC0087312E /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F484248E9BCC0087312E /* Page.swift */; };
-		4C72F487248E9BFA0087312E /* HowToPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F486248E9BFA0087312E /* HowToPlayViewController.swift */; };
 		4CEE79B6248FFB3B0031F920 /* 06animation.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4CEE79B5248FFB3B0031F920 /* 06animation.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47D86AE02712E5D900DE748A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		47D86AE22712E5E300DE748A /* Texts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Texts.swift; sourceTree = "<group>"; };
+		47D86AE22712E5E300DE748A /* Constats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constats.swift; sourceTree = "<group>"; };
 		4C0320072459728C0009FC50 /* Mind Sets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mind Sets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C03200A2459728C0009FC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C03200C2459728C0009FC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,7 +59,6 @@
 		4C72F480248E9B6D0087312E /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		4C72F482248E9BA40087312E /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		4C72F484248E9BCC0087312E /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		4C72F486248E9BFA0087312E /* HowToPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayViewController.swift; sourceTree = "<group>"; };
 		4CEE79B5248FFB3B0031F920 /* 06animation.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 06animation.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				47D86AE02712E5D900DE748A /* Colors.swift */,
-				47D86AE22712E5E300DE748A /* Texts.swift */,
+				47D86AE22712E5E300DE748A /* Constats.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -167,7 +165,6 @@
 				4C72F480248E9B6D0087312E /* SwipingController.swift */,
 				4C72F482248E9BA40087312E /* PageCell.swift */,
 				4C72F484248E9BCC0087312E /* Page.swift */,
-				4C72F486248E9BFA0087312E /* HowToPlayViewController.swift */,
 			);
 			path = "How-To-Play-MVC";
 			sourceTree = "<group>";
@@ -251,7 +248,6 @@
 				4C03200F2459728C0009FC50 /* GameScreenViewController.swift in Sources */,
 				4C72F47E248E924B0087312E /* gifImageExtension.swift in Sources */,
 				4C3257B324686A8F003C910C /* GameOverPopupViewController.swift in Sources */,
-				4C72F487248E9BFA0087312E /* HowToPlayViewController.swift in Sources */,
 				4C72F483248E9BA40087312E /* PageCell.swift in Sources */,
 				4C72F47C248E8FA00087312E /* GifAnimationController.swift in Sources */,
 				4C72F481248E9B6D0087312E /* SwipingController.swift in Sources */,
@@ -259,7 +255,7 @@
 				4C0320282459B2650009FC50 /* Grid.swift in Sources */,
 				4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */,
 				4C3257AD24670F59003C910C /* CardPopupViewController.swift in Sources */,
-				47D86AE32712E5E300DE748A /* Texts.swift in Sources */,
+				47D86AE32712E5E300DE748A /* Constats.swift in Sources */,
 				4C3257AB24670EF4003C910C /* PausePopUpViewController.swift in Sources */,
 				4C72F485248E9BCC0087312E /* Page.swift in Sources */,
 				4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */,
