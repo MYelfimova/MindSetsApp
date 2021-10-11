@@ -43,6 +43,20 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         return pc
     }()
     
+    let titleTextView: UITextView = {
+        let title = UITextView()
+        title.backgroundColor = UIColor.white
+        title.text = Constants.rulesTitle
+        title.textColor = UIColor.black
+        title.font = Constants.titleFont
+        title.translatesAutoresizingMaskIntoConstraints = false
+        title.textAlignment = .center
+        title.isEditable = false
+        title.isUserInteractionEnabled = false
+        title.isScrollEnabled = false
+        return title
+    }()
+    
     
     // MARK: - Lifecycle
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -80,7 +94,7 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBottomControlls()
+        setupLayout()
         
         //MARK: use this if i want to check the frames of the views!
         collectionView?.backgroundColor = .white
@@ -135,7 +149,7 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         if let title = nextButton.currentTitle {
             if title == Constants.playButtonTitle {
                 let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-                let logoScreen = storyboard.instantiateViewController(withIdentifier: "logoScreen") as! GifAnimationController
+                let logoScreen = storyboard.instantiateViewController(withIdentifier: "logoScreen") as! LottieAnimationVC
                 logoScreen.modalTransitionStyle = .crossDissolve
                 logoScreen.modalPresentationStyle = .fullScreen
                 self.present(logoScreen, animated: true, completion: nil)
@@ -152,7 +166,9 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         }
     }
     
-    private func setupBottomControlls() {
+    private func setupLayout() {
+        view.addSubview(titleTextView)
+
         let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.distribution = .equalSpacing
@@ -161,6 +177,10 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         view.addSubview(bottomControlsStackView)
         
         NSLayoutConstraint.activate([
+            titleTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            titleTextView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            titleTextView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
+            
             bottomControlsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
             bottomControlsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             bottomControlsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),

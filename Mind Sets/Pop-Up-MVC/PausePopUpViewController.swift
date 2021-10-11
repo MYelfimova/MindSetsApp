@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 
-protocol UpdateGameStatus: class {
+protocol UpdateGameStatus: AnyObject {
     func newGame(from: String)
     func gameResumed()
 }
@@ -19,20 +19,13 @@ protocol UpdateGameStatus: class {
 class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     
     var popupViewController: CardPopupViewController?
-    
-    var allowsTapToDismissPopupCard: Bool = false //true
-    
-    var allowsSwipeToDismissPopupCard: Bool = false //true
-    
+    var allowsTapToDismissPopupCard: Bool = true
+    var allowsSwipeToDismissPopupCard: Bool = true
     
     @IBOutlet weak var newGameButton: UIButton!
-    
-  //  @IBOutlet weak var howToPlayButton: UIButton!
-    
+    @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var resumeButton: UIButton!
     
-    
-    //Declaring the protocol delegate which I initialize in the didLoad() method of the GameScreenViewController.
     var pauseDelegate: UpdateGameStatus?
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
@@ -41,9 +34,15 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
         self.popupViewController?.close()
     }
     
-  //  @IBAction func howToPlayButtonPressed(_ sender: UIButton) {
-        // performSegue(withIdentifier: "showHowToPlaySegue", sender: self)
- //   }
+    @IBAction func howToPlayButtonPressed(_ sender: UIButton) {
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let swipingController = SwipingController(collectionViewLayout: layout)
+
+        let nav = UINavigationController(rootViewController: swipingController)
+        nav.present(SwipingController(), animated: true, completion: nil)
+    }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
         print("delegate sent")
@@ -58,8 +57,12 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     }
     
     func udjustButtonsLook() {
-        // let buttons: [UIButton] = [newGameButton, howToPlayButton, resumeButton]
-         let buttons: [UIButton] = [newGameButton, resumeButton]
+        
+        let resumeButtonTitle = NSMutableAttributedString(string: Constants.rulesTitle, attributes: [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue])
+        
+        howToPlayButton.setAttributedTitle(resumeButtonTitle, for: .normal)
+        
+        let buttons: [UIButton] = [newGameButton, resumeButton]
         
         for button in buttons {
             button.layer.cornerRadius = 20

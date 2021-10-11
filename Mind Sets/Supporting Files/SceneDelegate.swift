@@ -40,6 +40,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = swipingController
       //  }
         
+        
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		47D86AE12712E5D900DE748A /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE02712E5D900DE748A /* Colors.swift */; };
-		47D86AE32712E5E300DE748A /* Constats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE22712E5E300DE748A /* Constats.swift */; };
+		47D86AE32712E5E300DE748A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AE22712E5E300DE748A /* Constants.swift */; };
+		47D86AE62714082B00DE748A /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 47D86AE52714082B00DE748A /* Lottie */; };
+		47D86AE92714089A00DE748A /* mashynia-app-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 47D86AE82714089A00DE748A /* mashynia-app-3.json */; };
+		47D86AEB271408A400DE748A /* mashynia-app-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 47D86AEA271408A400DE748A /* mashynia-app-1.json */; };
+		47D86AED27140D9900DE748A /* LottieAnimationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AEC27140D9900DE748A /* LottieAnimationVC.swift */; };
 		4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200A2459728C0009FC50 /* AppDelegate.swift */; };
 		4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200C2459728C0009FC50 /* SceneDelegate.swift */; };
 		4C03200F2459728C0009FC50 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200E2459728C0009FC50 /* GameScreenViewController.swift */; };
@@ -25,8 +29,6 @@
 		4C3257AF2467183F003C910C /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257AE2467183E003C910C /* VCLLoggingViewController.swift */; };
 		4C3257B324686A8F003C910C /* GameOverPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257B224686A8F003C910C /* GameOverPopupViewController.swift */; };
 		4C3257B5246883EA003C910C /* CardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257B4246883EA003C910C /* CardBehavior.swift */; };
-		4C72F47C248E8FA00087312E /* GifAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F47B248E8FA00087312E /* GifAnimationController.swift */; };
-		4C72F47E248E924B0087312E /* gifImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F47D248E924B0087312E /* gifImageExtension.swift */; };
 		4C72F481248E9B6D0087312E /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F480248E9B6D0087312E /* SwipingController.swift */; };
 		4C72F483248E9BA40087312E /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F482248E9BA40087312E /* PageCell.swift */; };
 		4C72F485248E9BCC0087312E /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F484248E9BCC0087312E /* Page.swift */; };
@@ -35,7 +37,10 @@
 
 /* Begin PBXFileReference section */
 		47D86AE02712E5D900DE748A /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		47D86AE22712E5E300DE748A /* Constats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constats.swift; sourceTree = "<group>"; };
+		47D86AE22712E5E300DE748A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		47D86AE82714089A00DE748A /* mashynia-app-3.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mashynia-app-3.json"; sourceTree = "<group>"; };
+		47D86AEA271408A400DE748A /* mashynia-app-1.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mashynia-app-1.json"; sourceTree = "<group>"; };
+		47D86AEC27140D9900DE748A /* LottieAnimationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationVC.swift; sourceTree = "<group>"; };
 		4C0320072459728C0009FC50 /* Mind Sets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mind Sets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C03200A2459728C0009FC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C03200C2459728C0009FC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,8 +59,6 @@
 		4C3257AE2467183E003C910C /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
 		4C3257B224686A8F003C910C /* GameOverPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPopupViewController.swift; sourceTree = "<group>"; };
 		4C3257B4246883EA003C910C /* CardBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBehavior.swift; sourceTree = "<group>"; };
-		4C72F47B248E8FA00087312E /* GifAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifAnimationController.swift; sourceTree = "<group>"; };
-		4C72F47D248E924B0087312E /* gifImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gifImageExtension.swift; sourceTree = "<group>"; };
 		4C72F480248E9B6D0087312E /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
 		4C72F482248E9BA40087312E /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		4C72F484248E9BCC0087312E /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47D86AE62714082B00DE748A /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,9 +81,19 @@
 			isa = PBXGroup;
 			children = (
 				47D86AE02712E5D900DE748A /* Colors.swift */,
-				47D86AE22712E5E300DE748A /* Constats.swift */,
+				47D86AE22712E5E300DE748A /* Constants.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		47D86AE72714085A00DE748A /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				47D86AEC27140D9900DE748A /* LottieAnimationVC.swift */,
+				47D86AE82714089A00DE748A /* mashynia-app-3.json */,
+				47D86AEA271408A400DE748A /* mashynia-app-1.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		4C031FFE2459728C0009FC50 = {
@@ -101,9 +115,9 @@
 		4C0320092459728C0009FC50 /* Mind Sets */ = {
 			isa = PBXGroup;
 			children = (
+				47D86AE72714085A00DE748A /* Lottie */,
 				47D86ADF2712E5B100DE748A /* Extensions */,
 				4C72F488248EA0350087312E /* How-To-Play-MVC */,
-				4C72F47F248E988E0087312E /* Intro-Gif-MVC */,
 				4C72F475248E8A940087312E /* Game-MVC */,
 				4C72F476248E8B580087312E /* Pop-Up-MVC */,
 				4C0320102459728C0009FC50 /* Main.storyboard */,
@@ -150,15 +164,6 @@
 			path = "Pop-Up-MVC";
 			sourceTree = "<group>";
 		};
-		4C72F47F248E988E0087312E /* Intro-Gif-MVC */ = {
-			isa = PBXGroup;
-			children = (
-				4C72F47D248E924B0087312E /* gifImageExtension.swift */,
-				4C72F47B248E8FA00087312E /* GifAnimationController.swift */,
-			);
-			path = "Intro-Gif-MVC";
-			sourceTree = "<group>";
-		};
 		4C72F488248EA0350087312E /* How-To-Play-MVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +190,9 @@
 			dependencies = (
 			);
 			name = "Mind Sets";
+			packageProductDependencies = (
+				47D86AE52714082B00DE748A /* Lottie */,
+			);
 			productName = "Mind Sets";
 			productReference = 4C0320072459728C0009FC50 /* Mind Sets.app */;
 			productType = "com.apple.product-type.application";
@@ -213,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 4C031FFE2459728C0009FC50;
+			packageReferences = (
+				47D86AE42714082B00DE748A /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = 4C0320082459728C0009FC50 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -228,7 +239,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C032017245972950009FC50 /* LaunchScreen.storyboard in Resources */,
+				47D86AEB271408A400DE748A /* mashynia-app-1.json in Resources */,
 				4CEE79B6248FFB3B0031F920 /* 06animation.gif in Resources */,
+				47D86AE92714089A00DE748A /* mashynia-app-3.json in Resources */,
 				4C032014245972950009FC50 /* Assets.xcassets in Resources */,
 				4C0320122459728C0009FC50 /* Main.storyboard in Resources */,
 			);
@@ -246,21 +259,20 @@
 				4C3257B5246883EA003C910C /* CardBehavior.swift in Sources */,
 				4C0320262459AD590009FC50 /* CardsGameView.swift in Sources */,
 				4C03200F2459728C0009FC50 /* GameScreenViewController.swift in Sources */,
-				4C72F47E248E924B0087312E /* gifImageExtension.swift in Sources */,
 				4C3257B324686A8F003C910C /* GameOverPopupViewController.swift in Sources */,
 				4C72F483248E9BA40087312E /* PageCell.swift in Sources */,
-				4C72F47C248E8FA00087312E /* GifAnimationController.swift in Sources */,
 				4C72F481248E9B6D0087312E /* SwipingController.swift in Sources */,
 				4C3257AF2467183F003C910C /* VCLLoggingViewController.swift in Sources */,
 				4C0320282459B2650009FC50 /* Grid.swift in Sources */,
 				4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */,
 				4C3257AD24670F59003C910C /* CardPopupViewController.swift in Sources */,
-				47D86AE32712E5E300DE748A /* Constats.swift in Sources */,
+				47D86AE32712E5E300DE748A /* Constants.swift in Sources */,
 				4C3257AB24670EF4003C910C /* PausePopUpViewController.swift in Sources */,
 				4C72F485248E9BCC0087312E /* Page.swift in Sources */,
 				4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */,
 				4C0320242459A8FB0009FC50 /* CardView.swift in Sources */,
 				4C0320202459736E0009FC50 /* Card.swift in Sources */,
+				47D86AED27140D9900DE748A /* LottieAnimationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +470,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47D86AE42714082B00DE748A /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		47D86AE52714082B00DE748A /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47D86AE42714082B00DE748A /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4C031FFF2459728C0009FC50 /* Project object */;
 }
