@@ -12,34 +12,37 @@ import Lottie
 class LottieAnimationVC: UIViewController {
     // 1. Create the AnimationView
     private var animationView: AnimationView?
-
+    
     override func viewDidLoad() {
-
-      super.viewDidLoad()
-      
-      // 2. Start AnimationView with animation name (without extension)
-      
-      animationView = .init(name: "mashynia-app-1")
-      
-      animationView!.frame = view.bounds
-      
-      // 3. Set animation content mode
-      
-      animationView!.contentMode = .scaleAspectFit
-      
-      // 4. Set animation loop mode
-      
-      animationView!.loopMode = .playOnce
-      
-      // 5. Adjust animation speed
-      
-      animationView!.animationSpeed = 0.5
-      
-      view.addSubview(animationView!)
-      
-      // 6. Play animation
-      
-      animationView!.play()
-      
+        super.viewDidLoad()
+        runStartingAnimation()
+        perform(#selector(navigateToGame), with: nil, afterDelay: 1.2)
+    }
+    
+    @objc private func navigateToGame() {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let swipingController = SwipingController(collectionViewLayout: layout)
+        swipingController.modalPresentationStyle = .fullScreen //.popover
+        swipingController.modalTransitionStyle = .crossDissolve
+        self.present(swipingController, animated: true, completion: nil)
+    }
+    
+    private func runStartingAnimation() {
+        self.view.backgroundColor = UIColor.white
+        animationView = .init(name: "startScreen")
+        animationView!.frame = view.bounds
+        animationView!.contentMode = .scaleAspectFit
+        animationView!.loopMode = .playOnce
+        animationView!.animationSpeed = 0.5
+        
+        view.addSubview(animationView!)
+        animationView!.play()
+    }
+    
+    
+    
+    deinit {
+        print("DEINIT: \(self.description)")
     }
 }

@@ -70,5 +70,9 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
             button.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
         }
     }
+    
+    deinit {
+        print("DEINIT: \(self.description)")
+    }
 
 }

@@ -53,4 +53,8 @@ class GameOverPopupViewController: UIViewController {
 
         
     }
+    
+    deinit {
+        print("DEINIT: \(self.description)")
+    }
 }

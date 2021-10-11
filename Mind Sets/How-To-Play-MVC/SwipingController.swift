@@ -148,11 +148,7 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         
         if let title = nextButton.currentTitle {
             if title == Constants.playButtonTitle {
-                let storyboard = UIStoryboard(name: "Main" , bundle: nil)
-                let logoScreen = storyboard.instantiateViewController(withIdentifier: "logoScreen") as! LottieAnimationVC
-                logoScreen.modalTransitionStyle = .crossDissolve
-                logoScreen.modalPresentationStyle = .fullScreen
-                self.present(logoScreen, animated: true, completion: nil)
+                startGame()
             }
         }
         
@@ -164,6 +160,19 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
             nextButton.setTitle(Constants.nextButtonTitle, for: .normal)
             nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         }
+    }
+    
+    private func startGame() {
+        let storyboard = UIStoryboard(name: "Main" , bundle: nil)
+        let gameScreen = storyboard.instantiateViewController(withIdentifier: "gameScreenView") as! GameScreenViewController
+
+        UIApplication.shared.windows.first?.rootViewController = gameScreen
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+//        let nav = UINavigationController(rootViewController: gameScreen)
+//        nav.modalPresentationStyle = .fullScreen
+//        nav.modalTransitionStyle = .crossDissolve
+//        nav.setNavigationBarHidden(true, animated: false)
+//        self.present(nav, animated: true, completion: nil)
     }
     
     private func setupLayout() {
@@ -187,6 +196,10 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
             bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
         ])
         
+    }
+    
+    deinit {
+        print("DEINIT: \(self.description)")
     }
     
 }

@@ -187,9 +187,14 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.cardsGameView.delegate = self
         dealButton.layer.cornerRadius = 20
         hintButton.layer.cornerRadius = 20
     }
     
+    
+    deinit {
+        print("DEINIT: \(self.description)")
+    }
 }

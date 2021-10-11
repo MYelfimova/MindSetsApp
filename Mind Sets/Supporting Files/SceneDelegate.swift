@@ -11,36 +11,13 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-//    func isAppAlreadyLaunchedOnce()->Bool{
-//        let defaults = UserDefaults.standard
-//
-//        if let isAppAlreadyLaunchedOnce = defaults.string(forKey: "isAppAlreadyLaunchedOnce"){
-//            print("App already launched : \(isAppAlreadyLaunchedOnce)")
-//            return true
-//        }else{
-//            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
-//            print("App launched first time")
-//            return false
-//        }
-//    }
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
         
-        // this code is added here, because i want my application to start with a programmaticly created view (which doesnt exist on storyboard)
-       // let notFirstLaunch =  isAppAlreadyLaunchedOnce()
-     //   if !notFirstLaunch {
-            let layout = UICollectionViewFlowLayout()
-            layout.scrollDirection = .horizontal
-            let swipingController = SwipingController(collectionViewLayout: layout)
-            window?.rootViewController = swipingController
-      //  }
-        
-        
+        guard let scene = scene as? UIWindowScene else {return}
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = LottieAnimationVC()
+        window?.makeKeyAndVisible()
         
     }
 
