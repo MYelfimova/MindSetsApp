@@ -11,14 +11,13 @@ import Foundation
 
 class GameScreenViewController: UIViewController, updateLabelsDelegate {
 
-    
     var setsCounted = 0
     var pointsCounted = 0
     var gameTimer = Timer()
     var timeDisplayed = 0
     
     lazy var animator = UIDynamicAnimator(referenceView: view.superview ?? view)
-    lazy var cardBehavior = CardBehavior(in: animator)
+    lazy var cardBehavior = GameOverCardBehavior(in: animator)
     
     func startTimer() {
         gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countTimer), userInfo: nil, repeats: true)
@@ -193,12 +192,12 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
         hintButton.layer.cornerRadius = 20
         createObservers()
         
-        print("POP UP WAS INIT AND NOT DEINIT: \(self)")
+        print("DEBUG: INIT: \(self)")
     }
     
     
     deinit {
-        print("DEINIT: \(self.description)")
+        print("DEBUG: DEINIT: \(self.description)")
     }
     
     func createObservers() {

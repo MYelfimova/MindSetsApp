@@ -15,6 +15,7 @@ class AppStarterAnimationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("DEBUG: INIT: \(self.description)")
         runStartingAnimation()
         perform(#selector(navigateToGame), with: nil, afterDelay: 1.2)
     }
@@ -65,13 +66,14 @@ class AppStarterAnimationController: UIViewController {
             print("App already launched : \(isAppAlreadyLaunchedOnce)")
             return true
         }else{
-            defaults.set(true, forKey: "isAppAlreadyLaunchedOnce")
+            defaults.set(false, forKey: "isAppAlreadyLaunchedOnce")
             print("App launched first time")
             return false
         }
     }
     
     deinit {
-        print("DEINIT: \(self.description)")
+        print("DEBUG: DEINIT: \(self.description)")
     }
 }
+

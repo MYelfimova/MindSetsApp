@@ -1,5 +1,5 @@
 //
-//  CardBehavior.swift
+//  GameOverCardBehavior.swift
 //  DeckOfCards_5-6
 //
 //  Created by Maria Yelfimova on 4/17/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardBehavior: UIDynamicBehavior {
+class GameOverCardBehavior: UIDynamicBehavior {
     
     lazy var collisionBehavior: UICollisionBehavior = {
         let behavior = UICollisionBehavior()

@@ -17,7 +17,6 @@ class Card : CustomStringConvertible {
         return "a \(self.color) \(self.shade) \(self.shape) of number: \(self.number)\n"
     }
 
-    
     let identifier: Int
     var isVisible = false
     var isSelected = false

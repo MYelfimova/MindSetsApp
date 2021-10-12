@@ -76,13 +76,13 @@ struct CardsGame {
                 &&
                 ((card0[3] == card1[3] && card1[3] == card2[3]) || (card0[3] != card1[3] && card1[3] != card2[3] && card0[3] != card2[3]))
                 ) {
-                print("HINTS: the result of finding sets \(index) ")
+                //print("HINTS: the result of finding sets \(index) ")
                 return index
                 
             }
 
         }
-        print("HINTS: the result of finding sets [-10,-10,-10] ")
+        //print("HINTS: the result of finding sets [-10,-10,-10] ")
         return [-10,-10,-10]
   
     }

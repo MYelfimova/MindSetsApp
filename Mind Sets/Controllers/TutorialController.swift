@@ -199,7 +199,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
     }
     
     deinit {
-        print("DEINIT: \(self.description)")
+        print("DEBUG: DEINIT:  \(self.description)")
     }
     
 }

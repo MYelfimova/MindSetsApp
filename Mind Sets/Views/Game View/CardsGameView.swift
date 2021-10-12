@@ -20,7 +20,6 @@ protocol updateLabelsDelegate: class {
     func resetTimer()
 }
 
-//@IBDesignable
 class CardsGameView: UIView, UpdateGameStatus {
     func gameResumed() {
         delegate?.startTimer()
@@ -126,7 +125,6 @@ class CardsGameView: UIView, UpdateGameStatus {
     
     
      func newGame() {
-        print("newGame Called()")
          game = CardsGame()
          
          viewArray.forEach {$0.removeFromSuperview()}
@@ -148,7 +146,6 @@ class CardsGameView: UIView, UpdateGameStatus {
      }
     
     override func draw(_ rect: CGRect) {
-        print("draw method called")
         grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
         grid.cellCount = numberOfVisibleCards
 
@@ -283,13 +280,13 @@ class CardsGameView: UIView, UpdateGameStatus {
             //the data to be passed along with be defaulted to true but then will have to run through a check
             cardData.isSelected = cardData.isSelected == true ? false : true
             
-            print("\n BEFORE tap on a card:")
-            print("number of Visible cards: \(numberOfVisibleCards)")
-        
-            print("number of Selected cards: \(selectedCardsNumber)")
-            print(" Selected cards: \(game.cards.indices.filter({game.cards[$0].isSelected}))")
-            
-            print("number of views: \(viewArray.count)\n")
+//            print("\n BEFORE tap on a card:")
+//            print("number of Visible cards: \(numberOfVisibleCards)")
+//
+//            print("number of Selected cards: \(selectedCardsNumber)")
+//            print(" Selected cards: \(game.cards.indices.filter({game.cards[$0].isSelected}))")
+//
+//            print("number of views: \(viewArray.count)\n")
             
             //for enabling Hint button again
             hintButtonWasUsed = false

@@ -16,7 +16,7 @@ protocol UpdateGameStatus: AnyObject {
     func gameResumed()
 }
 
-class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
+class PausePopUpViewController: UIViewController, CardPopupContent { //VCLLoggingViewController,
     
     var popupViewController: CardPopupViewController?
     var allowsTapToDismissPopupCard: Bool = true
@@ -49,7 +49,7 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     override func viewDidLoad() {
         super.viewDidLoad()
         udjustButtonsLook()
-        print("POP UP WAS INIT AND NOT DEINIT: \(self)")
+        print("DEBUG: INIT: \(self)")
     }
     
     func udjustButtonsLook() {
@@ -68,7 +68,7 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     }
     
     deinit {
-        print("DEINIT: \(self.description)")
+        print("DEBUG: DEINIT: \(self.description)")
     }
 
 }
