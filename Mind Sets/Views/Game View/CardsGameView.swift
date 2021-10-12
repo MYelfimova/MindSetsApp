@@ -10,7 +10,7 @@ import UIKit
 
 
 //This protocol allows CardsGameView view to send data to GameScreenViewController. After this declaration I will call updateLabels() method when CardsGameView view needs it!
-protocol updateLabelsDelegate: class {
+protocol updateLabelsDelegate: AnyObject {
     //func updateLabels(sets: Int, score: Int)
     func updateScorelabel(score: Int)
     func updateSetsLabel(sets: Int)
@@ -78,17 +78,15 @@ class CardsGameView: UIView, UpdateGameStatus {
         }
     }
     
-    
-
             
     //Create an array of individual cardViews
     private func createCardView(cardNumber: Int) {
         
         let cardView = CardView()
-        cardView.number = game.cards[cardNumber].number //.rawValue
-        cardView.shape = game.cards[cardNumber].shape //.rawValue
-        cardView.color = game.cards[cardNumber].color //.rawValue)"
-        cardView.shade = game.cards[cardNumber].shade //.rawValue
+        cardView.number = game.cards[cardNumber].number
+        cardView.shape = game.cards[cardNumber].shape
+        cardView.color = game.cards[cardNumber].color
+        cardView.shade = game.cards[cardNumber].shade
         
         cardView.backgroundColor = UIColor.clear
         cardView.contentMode = .redraw
@@ -164,12 +162,11 @@ class CardsGameView: UIView, UpdateGameStatus {
         
             for i in 0..<numberOfVisibleCards {
 
-            //let cardView = CardView(grid[i]!)
             let cardView = CardView()
-            cardView.number = game.cards[i].number//.rawValue
-            cardView.shape = game.cards[i].shape//.rawValue
-            cardView.color = game.cards[i].color//.rawValue)"
-            cardView.shade = game.cards[i].shade//.rawValue
+            cardView.number = game.cards[i].number
+            cardView.shape = game.cards[i].shape
+            cardView.color = game.cards[i].color
+            cardView.shade = game.cards[i].shade
             cardView.isSelected = game.cards[i].isSelected
             cardView.isFaceUp = false
                 
@@ -205,10 +202,10 @@ class CardsGameView: UIView, UpdateGameStatus {
         grid.cellCount = numberOfVisibleCards
         
         for i in 0..<viewArray.count {
-            viewArray[i].number = game.cards[i].number//.rawValue
-            viewArray[i].shape = game.cards[i].shape//.rawValue
-            viewArray[i].color = game.cards[i].color//.rawValue)"
-            viewArray[i].shade = game.cards[i].shade//.rawValue
+            viewArray[i].number = game.cards[i].number
+            viewArray[i].shape = game.cards[i].shape
+            viewArray[i].color = game.cards[i].color
+            viewArray[i].shade = game.cards[i].shade
             viewArray[i].isSelected = game.cards[i].isSelected
              
             if viewArray[i].isHinted == true {

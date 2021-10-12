@@ -121,17 +121,17 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
         }
         
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=12 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) ) //  || setsCounted == 2)
+        if ((cardsGameView.game.cards.count<=12 && cardsGameView.game.getHintIndices() == [-10,-10,-10])  || setsCounted == 1)
         {
             gameTimer.invalidate()
-            perform(#selector(pushAroundCards), with: nil, afterDelay: 1.5)
+            perform(#selector(startGameOverAnimation), with: nil, afterDelay: 1.5)
             perform(#selector(openGameOverView), with: nil, afterDelay: 3.5)
         }
     }
     
     
     // segues end game screen
-    @objc func pushAroundCards() {
+    @objc func startGameOverAnimation() {
         let tempViewArray = cardsGameView.viewArray.shuffled()
         for view in tempViewArray {
             cardBehavior.addItem(view)
