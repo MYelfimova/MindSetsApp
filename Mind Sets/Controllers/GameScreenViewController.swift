@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 class GameScreenViewController: UIViewController, updateLabelsDelegate {
-
+    
     var setsCounted = 0
     var pointsCounted = 0
     var gameTimer = Timer()
@@ -88,15 +88,15 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
     }
     func updateScorelabel(score: Int) {
         pointsCounted = score
-         UIView.animate(
-             withDuration: 0.25,
-             animations: { () -> Void in
-             self.scoreLabel.transform = .init(scaleX: 1.18, y: 1.18)
-         }) { (finished: Bool) -> Void in
-             self.scoreLabel.text = "Score: \(score)"
-             UIView.animate(withDuration: 0.30, animations: { () -> Void in
-                 self.scoreLabel.transform = .identity
-             })
+        UIView.animate(
+            withDuration: 0.25,
+            animations: { () -> Void in
+                self.scoreLabel.transform = .init(scaleX: 1.18, y: 1.18)
+            }) { (finished: Bool) -> Void in
+            self.scoreLabel.text = "Score: \(score)"
+            UIView.animate(withDuration: 0.30, animations: { () -> Void in
+                self.scoreLabel.transform = .identity
+            })
         }
     }
     func updateButtonStatus() {
@@ -121,11 +121,12 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
         }
         
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=12 && cardsGameView.game.getHintIndices() == [-10,-10,-10])  || setsCounted == 1)
+        if ((cardsGameView.game.cards.count<=12 && cardsGameView.game.getHintIndices() == [-10,-10,-10])  || setsCounted == 3)
         {
+            loadHighScore()
             gameTimer.invalidate()
-            perform(#selector(startGameOverAnimation), with: nil, afterDelay: 1.5)
-            perform(#selector(openGameOverView), with: nil, afterDelay: 3.5)
+            perform(#selector(startGameOverAnimation), with: nil, afterDelay: 2)
+            perform(#selector(openGameOverView), with: nil, afterDelay: 4)
         }
     }
     
@@ -151,7 +152,7 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
     }
     
     
-
+    
     @IBOutlet weak var cardsGameView: CardsGameView!
     
     @IBOutlet weak var dealButton: UIButton!
@@ -160,7 +161,10 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
     @IBOutlet weak var setsLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var timerLabel: UILabel!
-
+    
+    @IBOutlet weak var highScoreLabel: UILabel!
+    
+    
     @IBAction func pauseButtonPressed(_ sender: UIButton) {
         //cardsGameView.isNewGame = true
         pauseTimer()
@@ -182,11 +186,9 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
         cardsGameView.getHint()
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadHighScore()
         self.cardsGameView.delegate = self
         dealButton.layer.cornerRadius = 20
         hintButton.layer.cornerRadius = 20
@@ -213,6 +215,14 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
             self.present(swipingController, animated: true, completion: nil)
         }
         
+    }
+    
+    private func loadHighScore() {
+        let defaults = UserDefaults.standard
+        let userBestScore = defaults.integer(forKey: "UserBestScore")
+        let newScore = max(userBestScore,self.pointsCounted)
+        highScoreLabel.text = "High Score: \(newScore)"
+        defaults.set(newScore, forKey: "UserBestScore")
     }
     
 }

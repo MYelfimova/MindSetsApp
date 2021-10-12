@@ -31,8 +31,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85b-Q6-scm">
+                                <rect key="frame" x="20" y="54" width="374" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" red="0.99609977009999995" green="0.26669746640000003" blue="0.59994000199999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="07H-QW-6qh">
-                                <rect key="frame" x="44" y="54" width="326" height="48"/>
+                                <rect key="frame" x="39" y="90.5" width="336.5" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n44-gV-vIf" userLabel="SetsLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="67" height="48"/>
@@ -51,7 +59,10 @@
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RLF-OW-mVD" userLabel="TimerLabel">
-                                        <rect key="frame" x="206.5" y="0.0" width="59.5" height="48"/>
+                                        <rect key="frame" x="206.5" y="0.0" width="70" height="48"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="EZF-Wh-5Ex"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -59,7 +70,7 @@
                                         <size key="shadowOffset" width="0.0" height="1"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gCG-jr-23K" userLabel="pauseButton">
-                                        <rect key="frame" x="296" y="0.0" width="30" height="48"/>
+                                        <rect key="frame" x="306.5" y="0.0" width="30" height="48"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
                                         <state key="normal" title="Ⅱ">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -71,7 +82,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7L-R9-Qze" customClass="CardsGameView" customModule="Mind_Sets" customModuleProvider="target">
-                                <rect key="frame" x="20" y="132" width="374" height="650"/>
+                                <rect key="frame" x="20" y="168.5" width="374" height="613.5"/>
                                 <color key="backgroundColor" red="0.98898702859999998" green="0.82113820309999996" blue="0.16592264179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="1200" id="mBR-1J-eRj"/>
@@ -113,11 +124,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.98898702859999998" green="0.82113820309999996" blue="0.16592264179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="85b-Q6-scm" secondAttribute="trailing" constant="20" id="9Ol-oQ-Jlm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RBw-V2-Lio" secondAttribute="bottom" constant="10" id="HR4-2S-gpp"/>
+                            <constraint firstItem="85b-Q6-scm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="PH6-hT-1ip"/>
                             <constraint firstItem="RBw-V2-Lio" firstAttribute="top" secondItem="d7L-R9-Qze" secondAttribute="bottom" constant="20" id="Qax-fW-mtK"/>
-                            <constraint firstItem="07H-QW-6qh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="RVJ-Q2-vzI"/>
+                            <constraint firstItem="07H-QW-6qh" firstAttribute="top" secondItem="85b-Q6-scm" secondAttribute="bottom" constant="10" id="RVJ-Q2-vzI"/>
                             <constraint firstItem="d7L-R9-Qze" firstAttribute="top" secondItem="07H-QW-6qh" secondAttribute="bottom" constant="30" id="b1C-JR-2g2"/>
                             <constraint firstItem="d7L-R9-Qze" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kqa-a0-XKJ"/>
+                            <constraint firstItem="85b-Q6-scm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="njb-eC-ngq"/>
                             <constraint firstItem="RBw-V2-Lio" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pu3-OF-0CF"/>
                             <constraint firstItem="07H-QW-6qh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qc7-NX-WeC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d7L-R9-Qze" secondAttribute="trailing" constant="20" id="tLH-Yt-Jwo"/>
@@ -126,6 +140,7 @@
                     <connections>
                         <outlet property="cardsGameView" destination="d7L-R9-Qze" id="ERB-Uf-c26"/>
                         <outlet property="dealButton" destination="AC8-I2-RsH" id="i8r-bY-bUu"/>
+                        <outlet property="highScoreLabel" destination="85b-Q6-scm" id="WPX-lk-STr"/>
                         <outlet property="hintButton" destination="f3t-2X-tQL" id="rfY-w9-Upy"/>
                         <outlet property="scoreLabel" destination="OIr-KQ-x9I" id="mBk-od-emq"/>
                         <outlet property="setsLabel" destination="n44-gV-vIf" id="qQc-So-Nx7"/>
