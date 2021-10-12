@@ -35,13 +35,8 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     }
     
     @IBAction func howToPlayButtonPressed(_ sender: UIButton) {
-
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let swipingController = SwipingController(collectionViewLayout: layout)
-
-        let nav = UINavigationController(rootViewController: swipingController)
-        nav.present(SwipingController(), animated: true, completion: nil)
+        self.popupViewController?.close()
+        NotificationCenter.default.post(name: Notification.Name.showGameRules, object: nil)
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
@@ -54,6 +49,7 @@ class PausePopUpViewController: VCLLoggingViewController, CardPopupContent {
     override func viewDidLoad() {
         super.viewDidLoad()
         udjustButtonsLook()
+        print("POP UP WAS INIT AND NOT DEINIT: \(self)")
     }
     
     func udjustButtonsLook() {

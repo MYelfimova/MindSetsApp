@@ -1,5 +1,5 @@
 //
-//  SwipingController.swift
+//  TutorialController.swift
 //  Mind Sets
 //
 //  Created by Maria Yelfimova on 6/8/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SwipingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class TutorialController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     
     // MARK: - Properties

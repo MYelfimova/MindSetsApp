@@ -191,10 +191,36 @@ class GameScreenViewController: UIViewController, updateLabelsDelegate {
         self.cardsGameView.delegate = self
         dealButton.layer.cornerRadius = 20
         hintButton.layer.cornerRadius = 20
+        createObservers()
+        
+        print("POP UP WAS INIT AND NOT DEINIT: \(self)")
     }
     
     
     deinit {
         print("DEINIT: \(self.description)")
     }
+    
+    func createObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScreenViewController.showGameRules(notification:)), name: Notification.Name.showGameRules, object: nil)
+    }
+    
+    @objc private func showGameRules(notification: NSNotification) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let layout = UICollectionViewFlowLayout()
+            layout.scrollDirection = .horizontal
+            let swipingController = TutorialController(collectionViewLayout: layout)
+            swipingController.modalPresentationStyle = .popover
+            self.present(swipingController, animated: true, completion: nil)
+        }
+        
+    }
+    
+}
+
+
+extension Notification.Name {
+    //static let resumeGame = Notification.Name("resumeGame")
+    //static let startOverNewGame = Notification.Name("startOverNewGame")
+    static let showGameRules = Notification.Name("showGameRules")
 }
