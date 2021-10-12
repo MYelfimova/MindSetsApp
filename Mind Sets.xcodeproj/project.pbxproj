@@ -137,10 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				4C3257B4246883EA003C910C /* CardBehavior.swift */,
+				4C03200E2459728C0009FC50 /* GameScreenViewController.swift */,
 				4C03201F2459736E0009FC50 /* Card.swift */,
 				4C0320232459A8FB0009FC50 /* CardView.swift */,
 				4C032021245973B70009FC50 /* CardsGame.swift */,
-				4C03200E2459728C0009FC50 /* GameScreenViewController.swift */,
 				4C0320252459AD590009FC50 /* CardsGameView.swift */,
 				4C0320272459B2650009FC50 /* Grid.swift */,
 			);
