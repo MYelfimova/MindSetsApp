@@ -39,14 +39,14 @@ class Card : CustomStringConvertible {
     }
     
     enum Shape: String, CustomStringConvertible {
-        case squiggle = "squiggle"
-        case oval = "oval"
-        case diamond = "diamond"
+        case pacmanShape = "pacmanShape"
+        case donutShape = "donutShape"
+        case squareShape = "squareShape"
         
         var description: String { return self.rawValue }
         
         static var all: [Shape] {
-            return [.squiggle, .oval, .diamond]
+            return [.pacmanShape, .donutShape, .squareShape]
         }
     }
     
@@ -63,14 +63,14 @@ class Card : CustomStringConvertible {
     }
     
     enum Color: String, CustomStringConvertible {
-        case red = "red"
-        case purple = "purple"
-        case green = "green"
+        case pink = "pink"
+        case orange = "orange"
+        case blue = "blue"
         
         var description: String { return self.rawValue }
         
         static var all: [Color] {
-            return [.red, .purple, .green]
+            return [.pink, .orange, .blue]
         }
     }
     

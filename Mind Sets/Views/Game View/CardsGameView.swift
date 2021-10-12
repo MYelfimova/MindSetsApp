@@ -85,10 +85,10 @@ class CardsGameView: UIView, UpdateGameStatus {
     private func createCardView(cardNumber: Int) {
         
         let cardView = CardView()
-        cardView.number = game.cards[cardNumber].number.rawValue
-        cardView.shape = game.cards[cardNumber].shape.rawValue
-        cardView.color = "\(game.cards[cardNumber].color.rawValue)"
-        cardView.shade = game.cards[cardNumber].shade.rawValue
+        cardView.number = game.cards[cardNumber].number //.rawValue
+        cardView.shape = game.cards[cardNumber].shape //.rawValue
+        cardView.color = game.cards[cardNumber].color //.rawValue)"
+        cardView.shade = game.cards[cardNumber].shade //.rawValue
         
         cardView.backgroundColor = UIColor.clear
         cardView.contentMode = .redraw
@@ -166,10 +166,10 @@ class CardsGameView: UIView, UpdateGameStatus {
 
             //let cardView = CardView(grid[i]!)
             let cardView = CardView()
-            cardView.number = game.cards[i].number.rawValue
-            cardView.shape = game.cards[i].shape.rawValue
-            cardView.color = "\(game.cards[i].color.rawValue)"
-            cardView.shade = game.cards[i].shade.rawValue
+            cardView.number = game.cards[i].number//.rawValue
+            cardView.shape = game.cards[i].shape//.rawValue
+            cardView.color = game.cards[i].color//.rawValue)"
+            cardView.shade = game.cards[i].shade//.rawValue
             cardView.isSelected = game.cards[i].isSelected
             cardView.isFaceUp = false
                 
@@ -205,10 +205,10 @@ class CardsGameView: UIView, UpdateGameStatus {
         grid.cellCount = numberOfVisibleCards
         
         for i in 0..<viewArray.count {
-            viewArray[i].number = game.cards[i].number.rawValue
-            viewArray[i].shape = game.cards[i].shape.rawValue
-            viewArray[i].color = "\(game.cards[i].color.rawValue)"
-            viewArray[i].shade = game.cards[i].shade.rawValue
+            viewArray[i].number = game.cards[i].number//.rawValue
+            viewArray[i].shape = game.cards[i].shape//.rawValue
+            viewArray[i].color = game.cards[i].color//.rawValue)"
+            viewArray[i].shade = game.cards[i].shade//.rawValue
             viewArray[i].isSelected = game.cards[i].isSelected
              
             if viewArray[i].isHinted == true {
@@ -232,10 +232,10 @@ class CardsGameView: UIView, UpdateGameStatus {
         for i in lastViewIndex ..< numberOfVisibleCards {
 
         let cardView = CardView(frame: grid[i]!)
-        cardView.number = game.cards[i].number.rawValue
-        cardView.shape = game.cards[i].shape.rawValue
-        cardView.color = "\(game.cards[i].color.rawValue)"
-        cardView.shade = game.cards[i].shade.rawValue
+        cardView.number = game.cards[i].number //.rawValue
+        cardView.shape = game.cards[i].shape //.rawValue
+        cardView.color = game.cards[i].color //.rawValue)"
+        cardView.shade = game.cards[i].shade //.rawValue
         cardView.isSelected = game.cards[i].isSelected
         cardView.isFaceUp = false
             
