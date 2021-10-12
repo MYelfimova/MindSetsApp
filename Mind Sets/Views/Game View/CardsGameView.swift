@@ -280,14 +280,6 @@ class CardsGameView: UIView, UpdateGameStatus {
             //the data to be passed along with be defaulted to true but then will have to run through a check
             cardData.isSelected = cardData.isSelected == true ? false : true
             
-//            print("\n BEFORE tap on a card:")
-//            print("number of Visible cards: \(numberOfVisibleCards)")
-//
-//            print("number of Selected cards: \(selectedCardsNumber)")
-//            print(" Selected cards: \(game.cards.indices.filter({game.cards[$0].isSelected}))")
-//
-//            print("number of views: \(viewArray.count)\n")
-            
             //for enabling Hint button again
             hintButtonWasUsed = false
             
