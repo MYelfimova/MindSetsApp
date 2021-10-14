@@ -9,13 +9,13 @@
 
 import UIKit
 
-public protocol CardPopupContent: class {
+protocol CardPopupContent: class {
     var popupViewController: CardPopupViewController? {get set}
     var allowsTapToDismissPopupCard: Bool {get}
     var allowsSwipeToDismissPopupCard: Bool {get}
 }
 
-public class CardPopupViewController: UIViewController {
+class CardPopupViewController: UIViewController {
     
     // MARK: - Public Interface
     

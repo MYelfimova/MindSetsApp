@@ -18,6 +18,7 @@ protocol updateLabelsDelegate: AnyObject {
     func startTimer()
     func pauseTimer()
     func resetTimer()
+    func loadHighScore(score: Int)
 }
 
 class CardsGameView: UIView, UpdateGameStatus {
@@ -32,7 +33,7 @@ class CardsGameView: UIView, UpdateGameStatus {
     
     // these are the scorring labels:
     var setsLabel = 0 { didSet {delegate?.updateSetsLabel(sets: setsLabel) ; delegate?.updateButtonStatus()}}
-    var scoreLabel = 0 { didSet {delegate?.updateScorelabel(score: scoreLabel) ; delegate?.updateButtonStatus()}}
+    var scoreLabel = 0 { didSet {delegate?.updateScorelabel(score: scoreLabel) ; delegate?.loadHighScore(score: scoreLabel); delegate?.updateButtonStatus()}}
     
     var dealCardsButtonIsActive: Bool {
         return ( (game.cards.count >= numberOfVisibleCards)
@@ -91,7 +92,6 @@ class CardsGameView: UIView, UpdateGameStatus {
         cardView.backgroundColor = UIColor.clear
         cardView.contentMode = .redraw
 
-        // MARK : WTF
         cardView.tag = cardNumber
         
         //declaring a tap gesture to each of our cards views.
@@ -102,8 +102,6 @@ class CardsGameView: UIView, UpdateGameStatus {
         
         //Adding the card view as a subview of playingCardView
         addSubview(cardView)
-        
-        //Adding each card view to an array. This will represent what cards are currently on the table.
         viewArray.append(cardView)
         
         delay = 0
@@ -229,10 +227,10 @@ class CardsGameView: UIView, UpdateGameStatus {
         for i in lastViewIndex ..< numberOfVisibleCards {
 
         let cardView = CardView(frame: grid[i]!)
-        cardView.number = game.cards[i].number //.rawValue
-        cardView.shape = game.cards[i].shape //.rawValue
-        cardView.color = game.cards[i].color //.rawValue)"
-        cardView.shade = game.cards[i].shade //.rawValue
+        cardView.number = game.cards[i].number
+        cardView.shape = game.cards[i].shape
+        cardView.color = game.cards[i].color
+        cardView.shade = game.cards[i].shade
         cardView.isSelected = game.cards[i].isSelected
         cardView.isFaceUp = false
             

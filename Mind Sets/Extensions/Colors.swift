@@ -20,7 +20,7 @@ extension UIColor {
     static var cardSelectedColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     static var cardBackFillColor = #colorLiteral(red: 1, green: 0.5102974176, blue: 0.1469883919, alpha: 1)
     
-    static var instuctionsBackgroundColor = #colorLiteral(red: 1, green: 0.4423316717, blue: 0.05583565682, alpha: 1)
-    static var mainTextColor = #colorLiteral(red: 1, green: 0.4423316717, blue: 0.05583565682, alpha: 1)
-    static var mainTitleColor = #colorLiteral(red: 1, green: 0.4423316717, blue: 0.05583565682, alpha: 1)
+    static var buttonWhiteColor = #colorLiteral(red: 0.9998916984, green: 1, blue: 0.9998809695, alpha: 1)
+    static var buttonYellowColor = #colorLiteral(red: 0.9864569306, green: 0.7381341457, blue: 0, alpha: 1)
+    static var buttonGrayColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
 }

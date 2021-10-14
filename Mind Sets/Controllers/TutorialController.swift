@@ -18,7 +18,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         button.setTitle(Constants.prevButtonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        button.setTitleColor(UIColor.gray, for: .normal)
+        button.setTitleColor(UIColor.mainGray, for: .normal)
         button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
         return button
     }()

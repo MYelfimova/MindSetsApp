@@ -103,12 +103,12 @@ class VCLLoggingViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        logVCL("viewWillLayoutSubViews() bounds.size = \(view.bounds.size)")
+     //   logVCL("viewWillLayoutSubViews() bounds.size = \(view.bounds.size)")
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        logVCL("viewDidLayoutSubVIews() bounds.size = \(view.bounds.size)")
+     //   logVCL("viewDidLayoutSubVIews() bounds.size = \(view.bounds.size)")
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
