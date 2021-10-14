@@ -13,10 +13,11 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     //MARK: - Properties
     
-    var setsCounted = 0
-    var pointsCounted = 0
+//    var setsCounted = 0
+//    var pointsCounted = 0
+//    var timeDisplayed = 0
     var gameTimer = Timer()
-    var timeDisplayed = 0
+    
     
     lazy var animator = UIDynamicAnimator(referenceView: view.superview ?? view)
     lazy var cardBehavior = GameOverCardBehavior(in: animator)
@@ -51,7 +52,15 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     //MARK: - Lifecycle
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+ 
+        GameScreenModel.setsCounted = 0
+        GameScreenModel.pointsCounted = 0
+        GameScreenModel.timeDisplayed = 0
+        
+        print("DEBUG: view will apear \(self)")
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         loadHighScore(score: 0)
@@ -84,7 +93,7 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     func resetTimer() {
         gameTimer.invalidate()
-        self.timeDisplayed = 0
+        GameScreenModel.timeDisplayed = 0
         timerLabel.text = "00:00"
     }
     
@@ -94,20 +103,18 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     //MARK: - Additional Functions fro updating Views inside
     
     func updateSetsLabel(sets: Int) {
-        setsCounted = sets
+        GameScreenModel.setsCounted = sets
         animateLabel(label: setsLabel, text: "Sets: \(sets)")
     }
     func updateScorelabel(score: Int) {
-        pointsCounted = score
+        GameScreenModel.pointsCounted = score
         animateLabel(label: scoreLabel, text: "Score: \(score)")
     }
     func loadHighScore(score: Int) {
-        let defaults = UserDefaults.standard
-        let userBestScore = defaults.integer(forKey: "UserBestScore")
-        let newScore = max(userBestScore,score,0)
-        
-        defaults.set(newScore, forKey: "UserBestScore")
-        if newScore != userBestScore {
+        let newScore = max(GameScreenModel.userBestScore,score,0)
+        GameScreenModel.userBestScore = newScore
+
+        if newScore != GameScreenModel.userBestScore {
             animateLabel(label: highScoreLabel, text: "High Score: \(newScore)")
         } else {
             self.highScoreLabel.text = "High Score: \(newScore)"
@@ -134,16 +141,18 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
             let gameOverview = segue.destination as! GameOverPopupViewController
             
             gameOverview.timerString = timerLabel.text ?? "11:11"
-            gameOverview.numberOfPoints = pointsCounted
-            gameOverview.numberOfSets = setsCounted
+            gameOverview.numberOfPoints =  GameScreenModel.pointsCounted
+            gameOverview.numberOfSets =  GameScreenModel.setsCounted
         }
     }
     
-
-
     
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(GameScreenViewController.showGameRules(notification:)), name: Notification.Name.showGameRules, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScreenViewController.resumeGame(notification:)), name: Notification.Name.resumeGame, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScreenViewController.startOverNewGame(notification:)), name: Notification.Name.startOverNewGame, object: nil)
     }
     
     @objc private func showGameRules(notification: NSNotification) {
@@ -157,14 +166,33 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
         
     }
     
-}
+    @objc private func resumeGame(notification: NSNotification) {
+        print("DEBUG: NOFICATION - resume Game")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            
+            
+            
+        }
+    }
+    
+    @objc private func startOverNewGame(notification: NSNotification) {
+        print("DEBUG: NOFICATION - startOverNewGame")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
 
-
-
-extension Notification.Name {
-    //static let resumeGame = Notification.Name("resumeGame")
-    //static let startOverNewGame = Notification.Name("startOverNewGame")
-    static let showGameRules = Notification.Name("showGameRules")
+            
+        }
+    }
+    
+    @objc private func resumeTimer(notification: NSNotification) {
+        print("DEBUG: NOFICATION - resumeTimer")
+    }
+    
+    @objc private func resetTimer(notification: NSNotification) {
+        print("DEBUG: NOFICATION - resetTimer")
+    }
+    
 }
 
 
@@ -205,7 +233,7 @@ extension GameScreenViewController {
         }
         
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=12 && cardsGameView.game.getHintIndices() == [-10,-10,-10])) //  || setsCounted == 3)
+        if ((cardsGameView.game.cards.count<=16 && cardsGameView.game.getHintIndices() == [-10,-10,-10])) //  || setsCounted == 3)
         {
             gameTimer.invalidate()
             perform(#selector(runGameOverAnimation), with: nil, afterDelay: 2)
@@ -215,39 +243,39 @@ extension GameScreenViewController {
     
     
     @objc func countTimer() {
-        self.timeDisplayed += 1
+        GameScreenModel.timeDisplayed += 1
         
-        if (self.timeDisplayed < 3600) {
-            if (self.timeDisplayed % 60) <= 9 {
-                if (self.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(Int(self.timeDisplayed / 60)):0\(self.timeDisplayed % 60)"
+        if (GameScreenModel.timeDisplayed < 3600) {
+            if (GameScreenModel.timeDisplayed % 60) <= 9 {
+                if (GameScreenModel.timeDisplayed/60) <= 9{
+                    self.timerLabel.text = "0\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
                 }
                 else {
-                    self.timerLabel.text = "\(Int(self.timeDisplayed / 60)):0\(self.timeDisplayed % 60)"
+                    self.timerLabel.text = "\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
                 }
             } else {
-                if (self.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(Int(self.timeDisplayed / 60)):\(self.timeDisplayed % 60)"
+                if (GameScreenModel.timeDisplayed/60) <= 9{
+                    self.timerLabel.text = "0\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
                 }
                 else {
-                    self.timerLabel.text = "\(Int(self.timeDisplayed / 60)):\(self.timeDisplayed % 60)"
+                    self.timerLabel.text = "\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
                 }
             }
         }
         else {
-            if (self.timeDisplayed % 60) <= 9 {
-                if (self.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(self.timeDisplayed % 3600):0\(Int(self.timeDisplayed / 60)):0\(self.timeDisplayed % 60)"
+            if (GameScreenModel.timeDisplayed % 60) <= 9 {
+                if (GameScreenModel.timeDisplayed/60) <= 9{
+                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):0\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
                 }
                 else {
-                    self.timerLabel.text = "0\(self.timeDisplayed % 3600):\(Int(self.timeDisplayed / 60)):0\(self.timeDisplayed % 60)"
+                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
                 }
             } else {
-                if (self.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(self.timeDisplayed % 3600):0\(Int(self.timeDisplayed / 60)):\(self.timeDisplayed % 60)"
+                if (GameScreenModel.timeDisplayed/60) <= 9{
+                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):0\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
                 }
                 else {
-                    self.timerLabel.text = "0\(self.timeDisplayed % 3600):\(Int(self.timeDisplayed / 60)):\(self.timeDisplayed % 60)"
+                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
                 }
             }
         }

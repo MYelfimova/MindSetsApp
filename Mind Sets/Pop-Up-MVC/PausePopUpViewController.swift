@@ -31,16 +31,18 @@ class PausePopUpViewController: UIViewController, CardPopupContent { //VCLLoggin
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         print("delegate sent")
         pauseDelegate?.newGame(from: "popup")
+        //NotificationCenter.default.post(name: Notification.Name.startOverNewGame, object: nil)
         self.popupViewController?.close()
     }
     
     @IBAction func howToPlayButtonPressed(_ sender: UIButton) {
-        self.popupViewController?.close()
         NotificationCenter.default.post(name: Notification.Name.showGameRules, object: nil)
+        self.popupViewController?.close()
     }
     
     @IBAction func resumeButtonPressed(_ sender: UIButton) {
         print("delegate sent")
+        //NotificationCenter.default.post(name: Notification.Name.resumeGame, object: nil)
         pauseDelegate?.gameResumed()
         self.popupViewController?.close()
     }

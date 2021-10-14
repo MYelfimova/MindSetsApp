@@ -10,7 +10,7 @@ import UIKit
 
 
 //This protocol allows CardsGameView view to send data to GameScreenViewController. After this declaration I will call updateLabels() method when CardsGameView view needs it!
-protocol updateLabelsDelegate: AnyObject {
+protocol updateLabelsDelegate: class {
     //func updateLabels(sets: Int, score: Int)
     func updateScorelabel(score: Int)
     func updateSetsLabel(sets: Int)
@@ -218,8 +218,6 @@ class CardsGameView: UIView, UpdateGameStatus {
             viewArray[i].backgroundColor = UIColor.clear
             viewArray[i].contentMode = .redraw
                 
-            // MARK : WTF
-            viewArray[i].tag = i
             configureCard(viewArray[i], gridNum: i)
         }
         let lastViewIndex = viewArray.count
