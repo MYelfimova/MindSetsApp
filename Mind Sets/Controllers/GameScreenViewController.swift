@@ -162,7 +162,8 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
             let layout = UICollectionViewFlowLayout()
             layout.scrollDirection = .horizontal
             let swipingController = TutorialController(collectionViewLayout: layout)
-            swipingController.modalPresentationStyle = .popover
+            swipingController.modalPresentationStyle = .overCurrentContext
+            
             self.present(swipingController, animated: true, completion: nil)
         }
         

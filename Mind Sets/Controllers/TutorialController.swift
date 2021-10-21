@@ -8,10 +8,11 @@
 
 import UIKit
 
-class TutorialController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    
+class TutorialController: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     
     // MARK: - Properties
+    
+    var isOpenedFromPopup = true
     
     let previousButton: UIButton = {
         let button = UIButton(type: .system)
@@ -41,6 +42,17 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         pc.currentPageIndicatorTintColor = UIColor.mainOrange
         pc.pageIndicatorTintColor = UIColor.mainOrange.withAlphaComponent(0.5)
         return pc
+    }()
+    
+    
+    let closingCrossView: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let image = UIImage(named: Constants.closingCrossButton)
+        button.setBackgroundImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(closeTutorial), for: .touchUpInside)
+        return button
     }()
     
     let titleTextView: UITextView = {
@@ -82,7 +94,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         print("page = \(pageControl.currentPage)")
         print(x, view.frame.width, pageControl.currentPage )
         
-        if pageControl.currentPage == Constants.pages.count-1 {
+        if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
             nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         } else {
@@ -131,7 +143,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         print("page = \(nextIndex)")
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
-        if pageControl.currentPage == Constants.pages.count-1 {
+        if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
             nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         } else {
@@ -147,13 +159,13 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
         if let title = nextButton.currentTitle {
-            if title == Constants.playButtonTitle {
+            if (title == Constants.playButtonTitle && !isOpenedFromPopup) {
                 startGame()
             }
         }
         
         
-        if pageControl.currentPage == Constants.pages.count-1 {
+        if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
             nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
         } else {
@@ -162,17 +174,32 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         }
     }
     
+    @objc private func closeTutorial() {
+        NotificationCenter.default.post(name: Notification.Name.resumeGame, object: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     private func startGame() {
         let storyboard = UIStoryboard(name: "Main" , bundle: nil)
         let gameScreen = storyboard.instantiateViewController(withIdentifier: "gameScreenView") as! GameScreenViewController
-
+        
         UIApplication.shared.windows.first?.rootViewController = gameScreen
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     private func setupLayout() {
         view.addSubview(titleTextView)
-
+        
+        if isOpenedFromPopup {
+            view.addSubview(closingCrossView)
+            NSLayoutConstraint.activate([
+                closingCrossView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+                closingCrossView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+                closingCrossView.heightAnchor.constraint(equalToConstant: 40),
+                closingCrossView.widthAnchor.constraint(equalToConstant: 40)
+            ])
+        }
+        
         let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.distribution = .equalSpacing
@@ -196,6 +223,4 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
     deinit {
         print("DEBUG: DEINIT:  \(self.description)")
     }
-    
 }
-

@@ -48,6 +48,7 @@ class AppStarterAnimationController: UIViewController {
         let tutorialController = TutorialController(collectionViewLayout: layout)
         tutorialController.modalPresentationStyle = .fullScreen //.popover
         tutorialController.modalTransitionStyle = .crossDissolve
+        tutorialController.isOpenedFromPopup = false
         self.present(tutorialController, animated: true, completion: nil)
     }
     

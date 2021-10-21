@@ -22,6 +22,7 @@ struct Constants {
     static let prevButtonTitle = "PREV"
     static let playButtonTitle = "PLAY"
     static let rulesTitle = "How To Play"
+    static let closingCrossButton = "closing-cross"
     
     static let titleFont = UIFont.boldSystemFont(ofSize:24)
     static let descriptionTitleFont = UIFont.boldSystemFont(ofSize: 20)
