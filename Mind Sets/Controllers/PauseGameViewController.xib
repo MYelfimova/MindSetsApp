@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PauseGameViewController" customModule="Mind_Sets" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonsView" destination="EKt-D6-Nr4" id="3ge-DL-f0g"/>
+                <outlet property="howToPlayButton" destination="e7E-8C-DnC" id="WD9-Us-iS5"/>
+                <outlet property="newGameButton" destination="PvX-yT-vaQ" id="ufY-MU-nm6"/>
+                <outlet property="resumeGameButton" destination="zAn-Ph-Rzx" id="Qy6-Cn-Ma8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKt-D6-Nr4">
+                    <rect key="frame" x="41.5" y="269" width="331" height="358"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0dU-Wz-BQo">
+                            <rect key="frame" x="50" y="50" width="231" height="258"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAn-Ph-Rzx">
+                                    <rect key="frame" x="0.0" y="0.0" width="231" height="76"/>
+                                    <color key="backgroundColor" red="0.97850137950000005" green="0.73390883210000002" blue="0.092978574339999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                    <state key="normal" title="Resume">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resumeGameButtonPressed:" destination="-1" eventType="touchUpInside" id="4dS-EU-csG"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvX-yT-vaQ">
+                                    <rect key="frame" x="0.0" y="91" width="231" height="76"/>
+                                    <color key="backgroundColor" red="0.97243148089999998" green="0.97253662350000003" blue="0.97651523350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="New Game">
+                                        <color key="titleColor" red="0.32152998449999998" green="0.32159090039999999" blue="0.32152614000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="newGameButtonPressed:" destination="-1" eventType="touchUpInside" id="0GR-pu-tXY"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e7E-8C-DnC">
+                                    <rect key="frame" x="0.0" y="182" width="231" height="76"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <state key="normal" title="How to Play">
+                                        <color key="titleColor" red="0.32152998449999998" green="0.32159090039999999" blue="0.32152614000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="howToPlayButtonPressed:" destination="-1" eventType="touchUpInside" id="4Ug-GQ-NGG"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="0dU-Wz-BQo" firstAttribute="leading" secondItem="EKt-D6-Nr4" secondAttribute="leading" constant="50" id="FE9-bW-zkm"/>
+                        <constraint firstAttribute="bottom" secondItem="0dU-Wz-BQo" secondAttribute="bottom" constant="50" id="Z0E-So-wzH"/>
+                        <constraint firstAttribute="trailing" secondItem="0dU-Wz-BQo" secondAttribute="trailing" constant="50" id="oFH-3j-a2s"/>
+                        <constraint firstItem="0dU-Wz-BQo" firstAttribute="top" secondItem="EKt-D6-Nr4" secondAttribute="top" constant="50" id="s4x-b5-vWh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" name="transparentBgForPopUps"/>
+            <constraints>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4Hy-4G-yvf"/>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="80r-dg-cIJ"/>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="8wY-Tk-Mqa"/>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="CUu-Mk-bBN"/>
+            </constraints>
+            <point key="canvasLocation" x="93" y="134"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="transparentBgForPopUps">
+            <color red="0.36002974076704541" green="0.36002974076704541" blue="0.36002974076704541" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

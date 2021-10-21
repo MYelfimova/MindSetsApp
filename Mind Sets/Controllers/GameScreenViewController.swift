@@ -30,12 +30,16 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     @IBAction func pauseButtonPressed(_ sender: UIButton) {
         //cardsGameView.isNewGame = true
         pauseTimer()
-        let pausePopup = storyboard?.instantiateViewController(withIdentifier: "pausePopUpViewController") as! PausePopUpViewController
-
-        let pausePopupShaped = CardPopupViewController(contentViewController: pausePopup)
-        
-        pausePopup.pauseDelegate = cardsGameView
-        pausePopupShaped.show(onViewController: self)
+        let pauseViewController = PauseGameViewController()
+        pauseViewController.modalTransitionStyle = .crossDissolve
+        pauseViewController.modalPresentationStyle = .overCurrentContext
+        self.present(pauseViewController, animated: true, completion: nil)
+//        let pausePopup = storyboard?.instantiateViewController(withIdentifier: "pausePopUpViewController") as! PausePopUpViewController
+//
+//        let pausePopupShaped = CardPopupViewController(contentViewController: pausePopup)
+//
+//        pausePopup.pauseDelegate = cardsGameView
+//        pausePopupShaped.show(onViewController: self)
     }
     
     @IBAction func dealButtonPressed(_ sender: UIButton) {
@@ -167,10 +171,8 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     @objc private func resumeGame(notification: NSNotification) {
         print("DEBUG: NOFICATION - resume Game")
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            
-            
-            
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.startTimer()
         }
     }
     
@@ -181,14 +183,6 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
             self.resetStats()
             self.cardsGameView.newGame(from: "popup")
         }
-    }
-    
-    @objc private func resumeTimer(notification: NSNotification) {
-        print("DEBUG: NOFICATION - resumeTimer")
-    }
-    
-    @objc private func resetTimer(notification: NSNotification) {
-        print("DEBUG: NOFICATION - resetTimer")
     }
     
 }
