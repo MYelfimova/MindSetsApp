@@ -168,11 +168,6 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
 
         UIApplication.shared.windows.first?.rootViewController = gameScreen
         UIApplication.shared.windows.first?.makeKeyAndVisible()
-//        let nav = UINavigationController(rootViewController: gameScreen)
-//        nav.modalPresentationStyle = .fullScreen
-//        nav.modalTransitionStyle = .crossDissolve
-//        nav.setNavigationBarHidden(true, animated: false)
-//        self.present(nav, animated: true, completion: nil)
     }
     
     private func setupLayout() {

@@ -21,7 +21,7 @@ protocol updateLabelsDelegate: class {
     func loadHighScore(score: Int)
 }
 
-class CardsGameView: UIView, UpdateGameStatus {
+class CardsGameView: UIView{
     func gameResumed() {
         delegate?.startTimer()
         print("GAME RESUMED")

@@ -30,8 +30,6 @@
 		4C0320242459A8FB0009FC50 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0320232459A8FB0009FC50 /* CardView.swift */; };
 		4C0320262459AD590009FC50 /* CardsGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0320252459AD590009FC50 /* CardsGameView.swift */; };
 		4C0320282459B2650009FC50 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0320272459B2650009FC50 /* Grid.swift */; };
-		4C3257AB24670EF4003C910C /* PausePopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257AA24670EF4003C910C /* PausePopUpViewController.swift */; };
-		4C3257AD24670F59003C910C /* CardPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257AC24670F59003C910C /* CardPopupViewController.swift */; };
 		4C3257AF2467183F003C910C /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257AE2467183E003C910C /* VCLLoggingViewController.swift */; };
 		4C3257B5246883EA003C910C /* GameOverCardBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3257B4246883EA003C910C /* GameOverCardBehavior.swift */; };
 		4C72F481248E9B6D0087312E /* TutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72F480248E9B6D0087312E /* TutorialController.swift */; };
@@ -64,8 +62,6 @@
 		4C0320232459A8FB0009FC50 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4C0320252459AD590009FC50 /* CardsGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsGameView.swift; sourceTree = "<group>"; };
 		4C0320272459B2650009FC50 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
-		4C3257AA24670EF4003C910C /* PausePopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PausePopUpViewController.swift; sourceTree = "<group>"; };
-		4C3257AC24670F59003C910C /* CardPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPopupViewController.swift; sourceTree = "<group>"; };
 		4C3257AE2467183E003C910C /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
 		4C3257B4246883EA003C910C /* GameOverCardBehavior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverCardBehavior.swift; sourceTree = "<group>"; };
 		4C72F480248E9B6D0087312E /* TutorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialController.swift; sourceTree = "<group>"; };
@@ -123,7 +119,6 @@
 				4C03200E2459728C0009FC50 /* GameScreenViewController.swift */,
 				47D86AF927214C1500DE748A /* GameOverViewController.swift */,
 				47D86AFF27215CB600DE748A /* PauseGameViewController.swift */,
-				47D86B0027215CB600DE748A /* PauseGameViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -132,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				47D86AFA27214C1500DE748A /* GameOverViewController.xib */,
+				47D86B0027215CB600DE748A /* PauseGameViewController.xib */,
 				47D86AF4271573E300DE748A /* Game View */,
 			);
 			path = Views;
@@ -180,7 +176,6 @@
 				47D86AF0271572EF00DE748A /* Models */,
 				47D86AE72714085A00DE748A /* Lottie */,
 				47D86ADF2712E5B100DE748A /* Extensions */,
-				4C72F476248E8B580087312E /* Pop-Up-MVC */,
 				4C0320102459728C0009FC50 /* Main.storyboard */,
 				4C032018245972950009FC50 /* Info.plist */,
 				4C032013245972950009FC50 /* Assets.xcassets */,
@@ -198,15 +193,6 @@
 				4C03200C2459728C0009FC50 /* SceneDelegate.swift */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		4C72F476248E8B580087312E /* Pop-Up-MVC */ = {
-			isa = PBXGroup;
-			children = (
-				4C3257AA24670EF4003C910C /* PausePopUpViewController.swift */,
-				4C3257AC24670F59003C910C /* CardPopupViewController.swift */,
-			);
-			path = "Pop-Up-MVC";
 			sourceTree = "<group>";
 		};
 		4C72F488248EA0350087312E /* Tutorial Screen Model */ = {
@@ -309,9 +295,7 @@
 				4C3257AF2467183F003C910C /* VCLLoggingViewController.swift in Sources */,
 				4C0320282459B2650009FC50 /* Grid.swift in Sources */,
 				4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */,
-				4C3257AD24670F59003C910C /* CardPopupViewController.swift in Sources */,
 				47D86AE32712E5E300DE748A /* Constants.swift in Sources */,
-				4C3257AB24670EF4003C910C /* PausePopUpViewController.swift in Sources */,
 				4C72F485248E9BCC0087312E /* Page.swift in Sources */,
 				47D86AF827184F0D00DE748A /* Notifications.swift in Sources */,
 				4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */,

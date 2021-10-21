@@ -93,7 +93,7 @@
     </objects>
     <resources>
         <namedColor name="transparentBgForPopUps">
-            <color red="0.36002974076704541" green="0.36002974076704541" blue="0.36002974076704541" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.36002974076704541" green="0.36002974076704541" blue="0.36002974076704541" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
