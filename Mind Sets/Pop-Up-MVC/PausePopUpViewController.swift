@@ -29,9 +29,9 @@ class PausePopUpViewController: UIViewController, CardPopupContent { //VCLLoggin
     var pauseDelegate: UpdateGameStatus?
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
-        print("delegate sent")
-        pauseDelegate?.newGame(from: "popup")
-        //NotificationCenter.default.post(name: Notification.Name.startOverNewGame, object: nil)
+        //print("delegate sent")
+        //pauseDelegate?.newGame(from: "popup")
+        NotificationCenter.default.post(name: Notification.Name.startOverNewGame, object: nil)
         self.popupViewController?.close()
     }
     

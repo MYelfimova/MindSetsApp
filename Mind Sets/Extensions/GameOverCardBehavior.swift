@@ -19,8 +19,8 @@ class GameOverCardBehavior: UIDynamicBehavior {
     lazy var itemBehavior: UIDynamicItemBehavior = {
        let behavior = UIDynamicItemBehavior()
         behavior.allowsRotation = true
-        behavior.elasticity = 0.7
-        behavior.resistance = 0
+        behavior.elasticity = 0
+        behavior.resistance = 0.8
         return behavior
     }()
     

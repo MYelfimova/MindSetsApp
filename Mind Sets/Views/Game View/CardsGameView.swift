@@ -120,6 +120,8 @@ class CardsGameView: UIView, UpdateGameStatus {
     }
     
     
+    
+    
      func newGame() {
          game = CardsGame()
          

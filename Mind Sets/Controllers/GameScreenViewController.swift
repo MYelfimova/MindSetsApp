@@ -49,22 +49,33 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
- 
+        resetStats()
+        print("DEBUG: view will apear \(self)")
+    }
+    
+    private func resetStats() {
         GameScreenModel.setsCounted = 0
         GameScreenModel.pointsCounted = 0
         GameScreenModel.timeDisplayed = 0
-        
-        print("DEBUG: view will apear \(self)")
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadHighScore(score: 0)
-        self.cardsGameView.delegate = self
-        dealButton.layer.cornerRadius = 20
-        hintButton.layer.cornerRadius = 20
+        setUpSubviews()
         createObservers()
         
+        self.cardsGameView.delegate = self
         print("DEBUG: INIT: \(self)")
+    }
+    
+    private func setUpSubviews() {
+        loadHighScore(score: 0)
+        dealButton.layer.cornerRadius = 20
+        hintButton.layer.cornerRadius = 20
+        dealButton.layer.borderWidth = 0.1
+        dealButton.layer.borderColor = UIColor.mainGray.cgColor
+        hintButton.layer.borderWidth = 0.1
+        hintButton.layer.borderColor = UIColor.mainGray.cgColor
     }
     
     override func applicationFinishedRestoringState() {
@@ -128,22 +139,11 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
         }
     }
     @objc func openGameOverView() {
-        //performSegue(withIdentifier: "toGameOverView", sender: self)
-        let gameOverViewController = GameOverViewController() // GameOverPopupViewController()
+        let gameOverViewController = GameOverViewController()
         gameOverViewController.modalPresentationStyle = .overCurrentContext
+        gameOverViewController.modalTransitionStyle = .crossDissolve
         self.present(gameOverViewController, animated: true, completion: nil)
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "toGameOverView" {
-//            let gameOverview = segue.destination as! GameOverPopupViewController
-//
-//            gameOverview.timerString = timerLabel.text ?? "11:11"
-//            gameOverview.numberOfPoints =  GameScreenModel.pointsCounted
-//            gameOverview.numberOfSets =  GameScreenModel.setsCounted
-//        }
-//    }
-    
     
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(GameScreenViewController.showGameRules(notification:)), name: Notification.Name.showGameRules, object: nil)
@@ -178,8 +178,8 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
         print("DEBUG: NOFICATION - startOverNewGame")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-
-            
+            self.resetStats()
+            self.cardsGameView.newGame(from: "popup")
         }
     }
     
