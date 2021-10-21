@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 
-protocol UpdateGameStatus: AnyObject {
+protocol UpdateGameStatus: class {
     func newGame(from: String)
     func gameResumed()
 }

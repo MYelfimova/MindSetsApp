@@ -145,7 +145,6 @@
                         <outlet property="scoreLabel" destination="OIr-KQ-x9I" id="mBk-od-emq"/>
                         <outlet property="setsLabel" destination="n44-gV-vIf" id="qQc-So-Nx7"/>
                         <outlet property="timerLabel" destination="RLF-OW-mVD" id="NaU-WT-fQQ"/>
-                        <segue destination="8dF-oC-np1" kind="presentation" identifier="toGameOverView" id="bnG-hk-T3e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -199,7 +198,6 @@
                                         </state>
                                         <connections>
                                             <action selector="newGameButton:" destination="8dF-oC-np1" eventType="touchUpInside" id="VOw-qo-hOo"/>
-                                            <segue destination="BYZ-38-t0r" kind="presentation" identifier="newGameFromGameOverScreen" id="Vi7-ub-vxD"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -313,7 +311,4 @@
             <point key="canvasLocation" x="943" y="-359"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="bnG-hk-T3e"/>
-    </inferredMetricsTieBreakers>
 </document>

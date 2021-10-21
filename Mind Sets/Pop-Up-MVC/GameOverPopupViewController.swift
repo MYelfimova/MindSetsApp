@@ -11,29 +11,31 @@ import UIKit
 
 class GameOverPopupViewController: UIViewController {
     
-    var numberOfSets = 0
-    var numberOfPoints = 0
-    var timerString = ""
+    var numberOfSets = GameScreenModel.setsCounted
+    var numberOfPoints = GameScreenModel.pointsCounted
+    var timerString = GameScreenModel.timeDisplayed
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setsLabel.text = "Sets: \(numberOfSets)"
-        pointsLabel.text = "Points: \(numberOfPoints)"
-        timeLabel.text = "Time: \(timerString)"
-        udjustOutletsLook()
+        
+//        self.setsLabel.text = "Sets: \(numberOfSets)"
+//        self.pointsLabel.text = "Points: \(numberOfPoints)"
+//        self.timeLabel.text = "Time: \(timerString)"
+       // udjustOutletsLook()
     }
         
     
     @IBAction func newGameButton(_ sender: UIButton) {
+        
     }
     
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
     
-    @IBOutlet weak var pointsLabel: UILabel!
+    @IBOutlet var pointsLabel: UILabel!
     
-    @IBOutlet weak var setsLabel: UILabel!
+    @IBOutlet var setsLabel: UILabel!
     
-    @IBOutlet weak var buttonNewGameLook: UIButton!
+    @IBOutlet var buttonNewGameLook: UIButton!
     func udjustOutletsLook() {
         let outlets: [UILabel] = [pointsLabel, setsLabel, timeLabel]
         

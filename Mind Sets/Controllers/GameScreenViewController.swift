@@ -12,12 +12,7 @@ import Foundation
 class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     //MARK: - Properties
-    
-//    var setsCounted = 0
-//    var pointsCounted = 0
-//    var timeDisplayed = 0
     var gameTimer = Timer()
-    
     
     lazy var animator = UIDynamicAnimator(referenceView: view.superview ?? view)
     lazy var cardBehavior = GameOverCardBehavior(in: animator)
@@ -133,18 +128,21 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
         }
     }
     @objc func openGameOverView() {
-        performSegue(withIdentifier: "toGameOverView", sender: self)
+        //performSegue(withIdentifier: "toGameOverView", sender: self)
+        let gameOverViewController = GameOverViewController() // GameOverPopupViewController()
+        gameOverViewController.modalPresentationStyle = .overCurrentContext
+        self.present(gameOverViewController, animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toGameOverView" {
-            let gameOverview = segue.destination as! GameOverPopupViewController
-            
-            gameOverview.timerString = timerLabel.text ?? "11:11"
-            gameOverview.numberOfPoints =  GameScreenModel.pointsCounted
-            gameOverview.numberOfSets =  GameScreenModel.setsCounted
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "toGameOverView" {
+//            let gameOverview = segue.destination as! GameOverPopupViewController
+//
+//            gameOverview.timerString = timerLabel.text ?? "11:11"
+//            gameOverview.numberOfPoints =  GameScreenModel.pointsCounted
+//            gameOverview.numberOfSets =  GameScreenModel.setsCounted
+//        }
+//    }
     
     
     func createObservers() {
@@ -233,7 +231,7 @@ extension GameScreenViewController {
         }
         
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=16 && cardsGameView.game.getHintIndices() == [-10,-10,-10])) //  || setsCounted == 3)
+        if ((cardsGameView.game.cards.count<=16 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) || GameScreenModel.setsCounted == 2)
         {
             gameTimer.invalidate()
             perform(#selector(runGameOverAnimation), with: nil, afterDelay: 2)
