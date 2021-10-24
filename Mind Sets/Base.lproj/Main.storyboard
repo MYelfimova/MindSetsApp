@@ -84,10 +84,6 @@
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7L-R9-Qze" customClass="CardsGameView" customModule="Mind_Sets" customModuleProvider="target">
                                 <rect key="frame" x="10" y="138.5" width="394" height="655.5"/>
                                 <color key="backgroundColor" red="0.98898702859999998" green="0.82113820309999996" blue="0.16592264179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="1200" id="mBR-1J-eRj"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" priority="750" constant="2500" id="ujU-Su-drh"/>
-                                </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-V2-Lio">
                                 <rect key="frame" x="44" y="804" width="326" height="50"/>

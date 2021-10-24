@@ -222,7 +222,7 @@ extension GameScreenViewController {
     
     private func checkIfTimeIsUp() {
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=20 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) || GameScreenModel.timeDisplayed == 0 || GameScreenModel.setsCounted == 2)
+        if ((cardsGameView.game.cards.count<=20 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) || GameScreenModel.timeDisplayed == 0) // || GameScreenModel.setsCounted == 2)
         {
             gameTimer.invalidate()
             perform(#selector(runGameOverAnimation), with: nil, afterDelay: 2)

@@ -12,6 +12,10 @@ extension Timer {
     static func calculateTimerLabel() -> String {
         GameScreenModel.timeDisplayed -= 1
         
+        if (GameScreenModel.timeDisplayed < 0) {
+            GameScreenModel.timeDisplayed = 0
+        }
+        
         if (GameScreenModel.timeDisplayed < 3600) {
             if (GameScreenModel.timeDisplayed % 60) <= 9 {
                 if (GameScreenModel.timeDisplayed/60) <= 9{
