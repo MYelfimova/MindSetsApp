@@ -13,7 +13,7 @@ class GameScreenModel {
     
     static var setsCounted = 0
     static var pointsCounted = 0
-    static var timeDisplayed = 0
+    static var timeDisplayed = 300
     static var userBestScore = 0
     
 }

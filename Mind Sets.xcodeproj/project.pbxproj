@@ -19,6 +19,7 @@
 		47D86AFE272150BD00DE748A /* colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47D86AFD272150BD00DE748A /* colors.xcassets */; };
 		47D86B0127215CB600DE748A /* PauseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86AFF27215CB600DE748A /* PauseGameViewController.swift */; };
 		47D86B0227215CB600DE748A /* PauseGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47D86B0027215CB600DE748A /* PauseGameViewController.xib */; };
+		47D86B042725573000DE748A /* TimerLabelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D86B032725573000DE748A /* TimerLabelManager.swift */; };
 		4C03200B2459728C0009FC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200A2459728C0009FC50 /* AppDelegate.swift */; };
 		4C03200D2459728C0009FC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200C2459728C0009FC50 /* SceneDelegate.swift */; };
 		4C03200F2459728C0009FC50 /* GameScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C03200E2459728C0009FC50 /* GameScreenViewController.swift */; };
@@ -49,6 +50,7 @@
 		47D86AFD272150BD00DE748A /* colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = colors.xcassets; sourceTree = "<group>"; };
 		47D86AFF27215CB600DE748A /* PauseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseGameViewController.swift; sourceTree = "<group>"; };
 		47D86B0027215CB600DE748A /* PauseGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PauseGameViewController.xib; sourceTree = "<group>"; };
+		47D86B032725573000DE748A /* TimerLabelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerLabelManager.swift; sourceTree = "<group>"; };
 		4C0320072459728C0009FC50 /* Mind Sets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mind Sets.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C03200A2459728C0009FC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C03200C2459728C0009FC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				4C3257AE2467183E003C910C /* VCLLoggingViewController.swift */,
 				4C3257B4246883EA003C910C /* GameOverCardBehavior.swift */,
 				47D86AF727184F0D00DE748A /* Notifications.swift */,
+				47D86B032725573000DE748A /* TimerLabelManager.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				4C0320202459736E0009FC50 /* Card.swift in Sources */,
 				47D86AED27140D9900DE748A /* AppStarterAnimationController.swift in Sources */,
 				47D86AF6271835FF00DE748A /* GameScreenModel.swift in Sources */,
+				47D86B042725573000DE748A /* TimerLabelManager.swift in Sources */,
 				47D86B0127215CB600DE748A /* PauseGameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

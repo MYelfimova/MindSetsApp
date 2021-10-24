@@ -38,7 +38,7 @@ class GameOverViewController: UIViewController {
     private func setUpLabels() {
         self.setsLabel.text = "Sets: \(GameScreenModel.setsCounted)"
         self.pointsLabel.text = "Points: \(GameScreenModel.pointsCounted)"
-        self.timeLabel.text = "Time: \(GameScreenModel.timeDisplayed)"
+        self.timeLabel.text = "Time: \(Timer.calculateTimerLabel())"
     }
     
     private func setUpSubviews() {

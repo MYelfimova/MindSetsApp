@@ -53,7 +53,7 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     private func resetStats() {
         GameScreenModel.setsCounted = 0
         GameScreenModel.pointsCounted = 0
-        GameScreenModel.timeDisplayed = 0
+        GameScreenModel.timeDisplayed = 300
     }
     
     override func viewDidLoad() {
@@ -87,7 +87,7 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     //MARK: - Timer Functions
     func startTimer() {
-        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(countTimer), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimerLabel), userInfo: nil, repeats: true)
     }
     
     func pauseTimer() {
@@ -96,8 +96,8 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     
     func resetTimer() {
         gameTimer.invalidate()
-        GameScreenModel.timeDisplayed = 0
-        timerLabel.text = "00:00"
+        GameScreenModel.timeDisplayed = 300
+        timerLabel.text = "05:00"
     }
     
   
@@ -218,8 +218,11 @@ extension GameScreenViewController {
             hintButton.alpha = 0.5
         }
         
+    }
+    
+    private func checkIfTimeIsUp() {
         // this condition indicated end of the game and call end of the game screen
-        if ((cardsGameView.game.cards.count<=16 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) || GameScreenModel.setsCounted == 2)
+        if ((cardsGameView.game.cards.count<=20 && cardsGameView.game.getHintIndices() == [-10,-10,-10]) || GameScreenModel.timeDisplayed == 0 || GameScreenModel.setsCounted == 2)
         {
             gameTimer.invalidate()
             perform(#selector(runGameOverAnimation), with: nil, afterDelay: 2)
@@ -227,45 +230,9 @@ extension GameScreenViewController {
         }
     }
     
-    
-    @objc func countTimer() {
-        GameScreenModel.timeDisplayed += 1
-        
-        if (GameScreenModel.timeDisplayed < 3600) {
-            if (GameScreenModel.timeDisplayed % 60) <= 9 {
-                if (GameScreenModel.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
-                }
-                else {
-                    self.timerLabel.text = "\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
-                }
-            } else {
-                if (GameScreenModel.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
-                }
-                else {
-                    self.timerLabel.text = "\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
-                }
-            }
-        }
-        else {
-            if (GameScreenModel.timeDisplayed % 60) <= 9 {
-                if (GameScreenModel.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):0\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
-                }
-                else {
-                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):\(Int(GameScreenModel.timeDisplayed / 60)):0\(GameScreenModel.timeDisplayed % 60)"
-                }
-            } else {
-                if (GameScreenModel.timeDisplayed/60) <= 9{
-                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):0\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
-                }
-                else {
-                    self.timerLabel.text = "0\(GameScreenModel.timeDisplayed % 3600):\(Int(GameScreenModel.timeDisplayed / 60)):\(GameScreenModel.timeDisplayed % 60)"
-                }
-            }
-        }
-        
+    @objc private func updateTimerLabel() {
+        self.timerLabel.text = Timer.calculateTimerLabel()
+        checkIfTimeIsUp()
     }
     
     

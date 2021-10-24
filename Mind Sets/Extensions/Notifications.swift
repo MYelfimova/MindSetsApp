@@ -14,9 +14,6 @@ extension Notification.Name {
     static let resumeGame = Notification.Name("resumeGame")
     static let startOverNewGame = Notification.Name("startOverNewGame")
     static let showGameRules = Notification.Name("showGameRules")
-    
-    static let pauseTheTimer = Notification.Name("pauseTheTimer")
-    static let resetTheTimer = Notification.Name("resetTheTimer")
 }
 
 
