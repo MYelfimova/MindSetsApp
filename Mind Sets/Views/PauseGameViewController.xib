@@ -71,6 +71,8 @@
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="0dU-Wz-BQo" firstAttribute="leading" secondItem="EKt-D6-Nr4" secondAttribute="leading" constant="50" id="FE9-bW-zkm"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="360" id="LdG-Br-OA4"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="332" id="VfZ-nN-043"/>
                         <constraint firstAttribute="bottom" secondItem="0dU-Wz-BQo" secondAttribute="bottom" constant="50" id="Z0E-So-wzH"/>
                         <constraint firstAttribute="trailing" secondItem="0dU-Wz-BQo" secondAttribute="trailing" constant="50" id="oFH-3j-a2s"/>
                         <constraint firstItem="0dU-Wz-BQo" firstAttribute="top" secondItem="EKt-D6-Nr4" secondAttribute="top" constant="50" id="s4x-b5-vWh"/>
@@ -82,8 +84,8 @@
             <constraints>
                 <constraint firstItem="EKt-D6-Nr4" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4Hy-4G-yvf"/>
                 <constraint firstItem="EKt-D6-Nr4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="80r-dg-cIJ"/>
-                <constraint firstItem="EKt-D6-Nr4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="8wY-Tk-Mqa"/>
-                <constraint firstItem="EKt-D6-Nr4" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" id="CUu-Mk-bBN"/>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" priority="750" id="8wY-Tk-Mqa"/>
+                <constraint firstItem="EKt-D6-Nr4" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.4" priority="750" id="CUu-Mk-bBN"/>
             </constraints>
             <point key="canvasLocation" x="93" y="134"/>
         </view>

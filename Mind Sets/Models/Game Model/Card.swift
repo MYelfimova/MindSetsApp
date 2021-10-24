@@ -86,7 +86,7 @@ class Card : CustomStringConvertible {
     
     init(number: Number, shape: Shape, shade: Shade, color: Color) {
         self.identifier = Card.getIdentifier()
-        self.isVisible = self.identifier <= 11 ? true : false
+        self.isVisible = self.identifier < 20 ? true : false
         self.shape = shape
         self.color = color
         self.shade = shade

@@ -193,10 +193,10 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         if isOpenedFromPopup {
             view.addSubview(closingCrossView)
             NSLayoutConstraint.activate([
-                closingCrossView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-                closingCrossView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-                closingCrossView.heightAnchor.constraint(equalToConstant: 40),
-                closingCrossView.widthAnchor.constraint(equalToConstant: 40)
+                closingCrossView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+                closingCrossView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+                closingCrossView.heightAnchor.constraint(equalToConstant: 30),
+                closingCrossView.widthAnchor.constraint(equalToConstant: 25)
             ])
         }
         

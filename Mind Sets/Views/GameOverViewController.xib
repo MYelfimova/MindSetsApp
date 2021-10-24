@@ -77,16 +77,18 @@
                         <constraint firstItem="ieK-zh-YjO" firstAttribute="top" secondItem="rMG-4p-aHW" secondAttribute="top" constant="20" id="WyI-1b-Des"/>
                         <constraint firstItem="ieK-zh-YjO" firstAttribute="leading" secondItem="rMG-4p-aHW" secondAttribute="leading" constant="10" id="XLg-va-fIU"/>
                         <constraint firstAttribute="trailing" secondItem="ieK-zh-YjO" secondAttribute="trailing" constant="10" id="d4D-9o-gdQ"/>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="332" id="mpT-N5-wLt"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="448" id="pfM-8j-Naa"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" name="transparentBgForPopUps"/>
             <constraints>
-                <constraint firstItem="rMG-4p-aHW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" id="CbW-aJ-Bdw"/>
+                <constraint firstItem="rMG-4p-aHW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.8" priority="750" id="CbW-aJ-Bdw"/>
                 <constraint firstItem="rMG-4p-aHW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Lfb-8U-5xB"/>
                 <constraint firstItem="rMG-4p-aHW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="d2c-eb-nuC"/>
-                <constraint firstItem="rMG-4p-aHW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="y3q-aS-KT1"/>
+                <constraint firstItem="rMG-4p-aHW" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" priority="750" id="y3q-aS-KT1"/>
             </constraints>
             <point key="canvasLocation" x="128.98550724637681" y="224.33035714285714"/>
         </view>

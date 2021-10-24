@@ -40,7 +40,7 @@
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="07H-QW-6qh">
-                                <rect key="frame" x="39" y="90.5" width="336.5" height="48"/>
+                                <rect key="frame" x="39" y="85.5" width="336.5" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n44-gV-vIf" userLabel="SetsLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="67" height="48"/>
@@ -82,7 +82,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7L-R9-Qze" customClass="CardsGameView" customModule="Mind_Sets" customModuleProvider="target">
-                                <rect key="frame" x="20" y="168.5" width="374" height="613.5"/>
+                                <rect key="frame" x="10" y="138.5" width="394" height="655.5"/>
                                 <color key="backgroundColor" red="0.98898702859999998" green="0.82113820309999996" blue="0.16592264179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" priority="750" constant="1200" id="mBR-1J-eRj"/>
@@ -90,7 +90,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RBw-V2-Lio">
-                                <rect key="frame" x="44" y="802" width="326" height="50"/>
+                                <rect key="frame" x="44" y="804" width="326" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3t-2X-tQL">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="50"/>
@@ -125,16 +125,16 @@
                         <color key="backgroundColor" red="0.98898702859999998" green="0.82113820309999996" blue="0.16592264179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="85b-Q6-scm" secondAttribute="trailing" constant="20" id="9Ol-oQ-Jlm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RBw-V2-Lio" secondAttribute="bottom" constant="10" id="HR4-2S-gpp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RBw-V2-Lio" secondAttribute="bottom" constant="8" id="HR4-2S-gpp"/>
                             <constraint firstItem="85b-Q6-scm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="PH6-hT-1ip"/>
-                            <constraint firstItem="RBw-V2-Lio" firstAttribute="top" secondItem="d7L-R9-Qze" secondAttribute="bottom" constant="20" id="Qax-fW-mtK"/>
-                            <constraint firstItem="07H-QW-6qh" firstAttribute="top" secondItem="85b-Q6-scm" secondAttribute="bottom" constant="10" id="RVJ-Q2-vzI"/>
-                            <constraint firstItem="d7L-R9-Qze" firstAttribute="top" secondItem="07H-QW-6qh" secondAttribute="bottom" constant="30" id="b1C-JR-2g2"/>
-                            <constraint firstItem="d7L-R9-Qze" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="kqa-a0-XKJ"/>
+                            <constraint firstItem="RBw-V2-Lio" firstAttribute="top" secondItem="d7L-R9-Qze" secondAttribute="bottom" constant="10" id="Qax-fW-mtK"/>
+                            <constraint firstItem="07H-QW-6qh" firstAttribute="top" secondItem="85b-Q6-scm" secondAttribute="bottom" constant="5" id="RVJ-Q2-vzI"/>
+                            <constraint firstItem="d7L-R9-Qze" firstAttribute="top" secondItem="07H-QW-6qh" secondAttribute="bottom" constant="5" id="b1C-JR-2g2"/>
+                            <constraint firstItem="d7L-R9-Qze" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="kqa-a0-XKJ"/>
                             <constraint firstItem="85b-Q6-scm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="njb-eC-ngq"/>
                             <constraint firstItem="RBw-V2-Lio" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pu3-OF-0CF"/>
                             <constraint firstItem="07H-QW-6qh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qc7-NX-WeC"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d7L-R9-Qze" secondAttribute="trailing" constant="20" id="tLH-Yt-Jwo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d7L-R9-Qze" secondAttribute="trailing" constant="10" id="tLH-Yt-Jwo"/>
                         </constraints>
                     </view>
                     <connections>

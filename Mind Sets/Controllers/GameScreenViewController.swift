@@ -28,18 +28,11 @@ class GameScreenViewController: VCLLoggingViewController, updateLabelsDelegate {
     @IBOutlet weak var highScoreLabel: UILabel!
     
     @IBAction func pauseButtonPressed(_ sender: UIButton) {
-        //cardsGameView.isNewGame = true
         pauseTimer()
         let pauseViewController = PauseGameViewController()
         pauseViewController.modalTransitionStyle = .crossDissolve
         pauseViewController.modalPresentationStyle = .overCurrentContext
         self.present(pauseViewController, animated: true, completion: nil)
-//        let pausePopup = storyboard?.instantiateViewController(withIdentifier: "pausePopUpViewController") as! PausePopUpViewController
-//
-//        let pausePopupShaped = CardPopupViewController(contentViewController: pausePopup)
-//
-//        pausePopup.pauseDelegate = cardsGameView
-//        pausePopupShaped.show(onViewController: self)
     }
     
     @IBAction func dealButtonPressed(_ sender: UIButton) {

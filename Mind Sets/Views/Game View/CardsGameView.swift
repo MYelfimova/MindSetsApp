@@ -37,49 +37,47 @@ class CardsGameView: UIView{
     
     var dealCardsButtonIsActive: Bool {
         return ( (game.cards.count >= numberOfVisibleCards)
-            && (game.cards.count > 12)  // if on the screen is less then 12 cards, it means the the deck finishes
-            && (numberOfVisibleCards < 30) ) // 30 is the max cards that card be dealt
+                    && (game.cards.count > 20)  // if on the screen is less then 20 cards, it means the the deck finishes
+                    && (numberOfVisibleCards < 30) ) // 30 is the max cards that card be dealt
     }
     var hintButtonIsActive: Bool {
         return ((game.getHintIndices() != [-10,-10,-10]) && !hintButtonWasUsed)
     }
     // this is the variable for tracking clicks on the Hint button
     var hintButtonWasUsed: Bool = false
-
+    
     var grid = Grid(layout: Grid.Layout.aspectRatio(CGFloat(0.60)))
     //this is the array for storring all my Visible cards
     var viewArray = [CardView]() { didSet { setNeedsDisplay(); setNeedsLayout() } }
     var hintIndices = [-1,-1,-1] { didSet { setNeedsDisplay(); setNeedsLayout() } }
     var game = CardsGame()
     var isNewGame: Bool = true {didSet { setNeedsDisplay(); setNeedsLayout() } }
-
+    
     
     //The animation delay that will be += through the interation to stutter the animation for each card so it delineates each card being dealt visually.
     private var delay = 0.0
     
     var numberOfVisibleCards: Int {
         get {
-            //return deck.grid.cellCount
             return (game.cards.indices.filter({game.cards[$0].isVisible})).count
         }
     }
     var visibleCards: [Card] {
         get {
-            //return deck.grid.cellCount
             return game.cards.filter({$0.isVisible})
         }
     }
     var add3MoreBtnIsActive: Bool {
         return (numberOfVisibleCards < 30 && game.cards.count != numberOfVisibleCards)
     }
-        
+    
     var selectedCardsNumber: Int {
         get {
             return (game.cards.indices.filter({game.cards[$0].isSelected})).count
         }
     }
     
-            
+    
     //Create an array of individual cardViews
     private func createCardView(cardNumber: Int) {
         
@@ -91,7 +89,7 @@ class CardsGameView: UIView{
         
         cardView.backgroundColor = UIColor.clear
         cardView.contentMode = .redraw
-
+        
         cardView.tag = cardNumber
         
         //declaring a tap gesture to each of our cards views.
@@ -108,7 +106,7 @@ class CardsGameView: UIView{
         for i in 0..<numberOfVisibleCards {
             drawAnimation(view: viewArray[i], rect: grid[i])
         }
-                
+        
     }
     
     func newGame(from: String){
@@ -122,31 +120,31 @@ class CardsGameView: UIView{
     
     
     
-     func newGame() {
-         game = CardsGame()
-         
-         viewArray.forEach {$0.removeFromSuperview()}
-         viewArray = []
-         hintIndices = [-1,-1,-1]
-         scoreLabel = 0
-         setsLabel = 0
+    func newGame() {
+        game = CardsGame()
+        
+        viewArray.forEach {$0.removeFromSuperview()}
+        viewArray = []
+        hintIndices = [-1,-1,-1]
+        scoreLabel = 0
+        setsLabel = 0
         
         //for enabling Hint button if it was disabled from the last game
         hintButtonWasUsed = false
-
-         grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
-         grid.cellCount = numberOfVisibleCards
         
-         createCardViews(grid: grid)
-         delegate?.updateButtonStatus()
-         delegate?.startTimer()
-         isNewGame = false
-     }
+        grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
+        grid.cellCount = numberOfVisibleCards
+        
+        createCardViews(grid: grid)
+        delegate?.updateButtonStatus()
+        delegate?.startTimer()
+        isNewGame = false
+    }
     
     override func draw(_ rect: CGRect) {
         grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
         grid.cellCount = numberOfVisibleCards
-
+        
         if isNewGame {
             newGame()
         }
@@ -160,8 +158,8 @@ class CardsGameView: UIView{
     func createCardViews(grid: Grid) {
         viewArray.forEach {$0.removeFromSuperview()}
         
-            for i in 0..<numberOfVisibleCards {
-
+        for i in 0..<numberOfVisibleCards {
+            
             let cardView = CardView()
             cardView.number = game.cards[i].number
             cardView.shape = game.cards[i].shape
@@ -169,10 +167,64 @@ class CardsGameView: UIView{
             cardView.shade = game.cards[i].shade
             cardView.isSelected = game.cards[i].isSelected
             cardView.isFaceUp = false
-                
+            
             cardView.backgroundColor = UIColor.clear
             cardView.contentMode = .redraw
-                
+            
+            cardView.tag = i
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            cardView.addGestureRecognizer(tap)
+            addSubview(cardView)
+            viewArray.append(cardView)
+        }
+        
+        delay = 0
+        for i in 0..<numberOfVisibleCards {
+            drawAnimation(view: viewArray[i], rect: grid[i])
+        }
+        dealIfNeeded()
+    }
+    
+    func updateCardViews() {
+        grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
+        grid.cellCount = numberOfVisibleCards
+        
+        for i in 0..<viewArray.count {
+            viewArray[i].number = game.cards[i].number
+            viewArray[i].shape = game.cards[i].shape
+            viewArray[i].color = game.cards[i].color
+            viewArray[i].shade = game.cards[i].shade
+            viewArray[i].isSelected = game.cards[i].isSelected
+            
+            if viewArray[i].isHinted == true {
+                viewArray[i].isHinted = false
+            } else if hintIndices.contains(i) {
+                viewArray[i].isHinted = true
+                hintIndices.remove(at: hintIndices.firstIndex(of: i)!)
+            }
+            
+            viewArray[i].tag = i
+            
+            viewArray[i].backgroundColor = UIColor.clear
+            viewArray[i].contentMode = .redraw
+            
+            configureCard(viewArray[i], gridNum: i)
+        }
+        let lastViewIndex = viewArray.count
+        
+        for i in lastViewIndex ..< numberOfVisibleCards {
+            
+            let cardView = CardView(frame: grid[i]!)
+            cardView.number = game.cards[i].number
+            cardView.shape = game.cards[i].shape
+            cardView.color = game.cards[i].color
+            cardView.shade = game.cards[i].shade
+            cardView.isSelected = game.cards[i].isSelected
+            cardView.isFaceUp = false
+            
+            cardView.backgroundColor = UIColor.clear
+            cardView.contentMode = .redraw
+            
             // MARK : WTF
             cardView.tag = i
             
@@ -187,71 +239,7 @@ class CardsGameView: UIView{
             
             //Adding each card view to an array. This will represent what cards are currently on the table.
             viewArray.append(cardView)
-                
-            }
-            
-            delay = 0
-            for i in 0..<numberOfVisibleCards {
-                drawAnimation(view: viewArray[i], rect: grid[i])
-            }
-            dealIfNeeded()
-    }
-    
-    func updateCardViews() {
-        grid.frame = CGRect(x: self.bounds.origin.x, y: self.bounds.origin.y, width: self.bounds.width, height: self.bounds.height)
-        grid.cellCount = numberOfVisibleCards
-        
-        for i in 0..<viewArray.count {
-            viewArray[i].number = game.cards[i].number
-            viewArray[i].shape = game.cards[i].shape
-            viewArray[i].color = game.cards[i].color
-            viewArray[i].shade = game.cards[i].shade
-            viewArray[i].isSelected = game.cards[i].isSelected
-             
-            if viewArray[i].isHinted == true {
-                viewArray[i].isHinted = false
-            } else if hintIndices.contains(i) {
-                viewArray[i].isHinted = true
-                hintIndices.remove(at: hintIndices.firstIndex(of: i)!)
-            }
-            
-            viewArray[i].tag = i
-            
-            viewArray[i].backgroundColor = UIColor.clear
-            viewArray[i].contentMode = .redraw
-                
             configureCard(viewArray[i], gridNum: i)
-        }
-        let lastViewIndex = viewArray.count
-        
-        for i in lastViewIndex ..< numberOfVisibleCards {
-
-        let cardView = CardView(frame: grid[i]!)
-        cardView.number = game.cards[i].number
-        cardView.shape = game.cards[i].shape
-        cardView.color = game.cards[i].color
-        cardView.shade = game.cards[i].shade
-        cardView.isSelected = game.cards[i].isSelected
-        cardView.isFaceUp = false
-            
-        cardView.backgroundColor = UIColor.clear
-        cardView.contentMode = .redraw
-            
-        // MARK : WTF
-        cardView.tag = i
-        
-        //declaring a tap gesture to each of our cards views.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        
-        //Adding the gesture to each card.
-        cardView.addGestureRecognizer(tap)
-        
-        //Adding the card view as a subview of playingCardView
-        addSubview(cardView)
-        
-        //Adding each card view to an array. This will represent what cards are currently on the table.
-        viewArray.append(cardView)
-        configureCard(viewArray[i], gridNum: i)
         }
         delegate?.updateButtonStatus()
         
@@ -262,11 +250,11 @@ class CardsGameView: UIView{
     func dealIfNeeded() {
         if (dealCardsButtonIsActive && game.getHintIndices() == [-10,-10,-10]){
             perform(#selector(dealCards), with: 0, afterDelay: 1.5)
- 
+            
         }
     }
-     
-
+    
+    
     @objc func handleTap(_ pickedCard: UIGestureRecognizer) {
         if let cardSelectedView = pickedCard.view as? CardView {
             
@@ -285,52 +273,52 @@ class CardsGameView: UIView{
                 }
                 cardData.isSelected = true
                 
-                case 3:
+            case 3:
                 if (game.checkMatching()) {
                     //updating my score variables after a set was found
                     setsLabel+=1; scoreLabel+=5
-
+                    
                     let selectedCardsIndices = (game.cards.indices.filter({game.cards[$0].isSelected})).sorted(by: {$0 > $1})
-                    if ((numberOfVisibleCards > 2) && (numberOfVisibleCards < 13)) {
-                            UIViewPropertyAnimator.runningPropertyAnimator(
-                                withDuration: 0.3,
-                                delay: 0,
-                                options: [],
-                                animations: {
-                                    
-                                    selectedCardsIndices.forEach { index in
-                                        self.viewArray[index].transform = .identity
-                                        self.viewArray[index].transform = CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0)
-                                    }
-                                },
-                                completion: { position in
-                                    UIViewPropertyAnimator.runningPropertyAnimator(
-                                        withDuration: 0.45,
-                                        delay: 0,
-                                        options: [],
-                                        animations: {
-                                             selectedCardsIndices.forEach { index in
-                                                self.viewArray[index].transform = CGAffineTransform.identity.scaledBy(x: 0.2, y: 0.2)
-                                                self.viewArray[index].alpha = 0
-                                            }
-                                        },
-                                        completion: { position in
-                                             selectedCardsIndices.forEach { index in
-                                                self.viewArray[index].removeFromSuperview()
-                                                self.viewArray.remove(at: index)
-                                                self.game.cards.remove(at: index)
-                                                
-                                                if self.game.cards.count > self.numberOfVisibleCards {
-                                                    self.game.cards[self.numberOfVisibleCards].isVisible = true
-                                                }
-
+                    if ((numberOfVisibleCards > 2) && (numberOfVisibleCards <= 20)) {
+                        UIViewPropertyAnimator.runningPropertyAnimator(
+                            withDuration: 0.3,
+                            delay: 0,
+                            options: [],
+                            animations: {
+                                
+                                selectedCardsIndices.forEach { index in
+                                    self.viewArray[index].transform = .identity
+                                    self.viewArray[index].transform = CGAffineTransform.identity.scaledBy(x: 2.0, y: 2.0)
+                                }
+                            },
+                            completion: { position in
+                                UIViewPropertyAnimator.runningPropertyAnimator(
+                                    withDuration: 0.45,
+                                    delay: 0,
+                                    options: [],
+                                    animations: {
+                                        selectedCardsIndices.forEach { index in
+                                            self.viewArray[index].transform = CGAffineTransform.identity.scaledBy(x: 0.2, y: 0.2)
+                                            self.viewArray[index].alpha = 0
+                                        }
+                                    },
+                                    completion: { position in
+                                        selectedCardsIndices.forEach { index in
+                                            self.viewArray[index].removeFromSuperview()
+                                            self.viewArray.remove(at: index)
+                                            self.game.cards.remove(at: index)
+                                            
+                                            if self.game.cards.count > self.numberOfVisibleCards {
+                                                self.game.cards[self.numberOfVisibleCards].isVisible = true
                                             }
                                             
                                         }
-                                    )
-                                }
-                            )
-                            
+                                        
+                                    }
+                                )
+                            }
+                        )
+                        
                     } else {
                         UIViewPropertyAnimator.runningPropertyAnimator(
                             withDuration: 0.3,
@@ -349,13 +337,13 @@ class CardsGameView: UIView{
                                     delay: 0,
                                     options: [],
                                     animations: {
-                                         selectedCardsIndices.forEach { index in
+                                        selectedCardsIndices.forEach { index in
                                             self.viewArray[index].transform = CGAffineTransform.identity.scaledBy(x: 0.2, y: 0.2)
                                             self.viewArray[index].alpha = 0
                                         }
                                     },
                                     completion: { position in
-                                         selectedCardsIndices.forEach { index in
+                                        selectedCardsIndices.forEach { index in
                                             self.viewArray[index].removeFromSuperview()
                                             self.viewArray.remove(at: index)
                                             self.game.cards.remove(at: index)
@@ -425,26 +413,26 @@ class CardsGameView: UIView{
                 view.isHidden = false
                 view.frame.size = rect?
                     .insetBy(dx: 6, dy: 6).size ?? self.bounds.size
-            view.center = CGPoint(x: rect?
-                .midX ?? self.bounds.midX, y: rect?
-                    .midY ?? self.bounds.midY) }
+                view.center = CGPoint(x: rect?
+                                        .midX ?? self.bounds.midX, y: rect?
+                                            .midY ?? self.bounds.midY) }
             , completion: { finished in
                 UIView.transition(
                     with: view,
-                    duration: 0.5,
+                    duration: 0.25,
                     options: [.transitionFlipFromLeft],
                     // TODO: FaceUp/FaceDown wil be used here: which needs to be painted as well
                     animations: { view.isFaceUp = true }
                 )
-        })
+            })
         //The animation delay that will be += through the interation to stutter the animation for each card so it delineates each card being dealt visually.
-        delay += 0.25
+        delay += 0.1
     }
-
-// MARK: Important ! This function makes a smooth transition when a Deal card is pressed or some cards are matched
+    
+    // MARK: Important ! This function makes a smooth transition when a Deal card is pressed or some cards are matched12
     //Configure the Setviewcard and override its layout and position
     func configureCard(_ label: CardView, gridNum: Int) {
- 
+        
         //Currently this is used to establish a basic layout for the cards in the grid and have them redraw when views are laidout. This actiona is also animated. The initial twelve cards being dealt are in the newGame function and impliment annimation that starts from bottom left of the view and animates as they move into place in the grid.
         UIViewPropertyAnimator.runningPropertyAnimator(
             withDuration: 0.25,
@@ -454,21 +442,21 @@ class CardsGameView: UIView{
                     .insetBy(dx: 6, dy: 6).size ?? self.bounds.size;
                 label.center = CGPoint(x: self.grid[gridNum]?.midX ?? self.bounds.midX, y: self.grid[gridNum]?.midY ?? self.bounds.midY)
                 
-        }, completion: { finished in
-            if label.isFaceUp == false {
-                UIView.transition(
-                    with: label,
-                    duration: 0.5,
-                    options: [.transitionFlipFromLeft],
-                    // TODO: FaceUp/FaceDown wil be used here: which needs to be painted as well
-                    animations: { label.isFaceUp = true}
-                )
-            }
+            }, completion: { finished in
+                if label.isFaceUp == false {
+                    UIView.transition(
+                        with: label,
+                        duration: 0.5,
+                        options: [.transitionFlipFromLeft],
+                        // TODO: FaceUp/FaceDown wil be used here: which needs to be painted as well
+                        animations: { label.isFaceUp = true}
+                    )
+                }
                 
-        })
-       
+            })
+        
     }
     
-
+    
 }
 
