@@ -3,7 +3,7 @@
 //  Concentration
 //
 //  Created by Maria Yelfimova on 5/5/20.
-//  Copyright © 2020 Hummus Inc. All rights reserved.
+//  Copyright © 2020 Maria Yelfimova. All rights reserved.
 //
 
 import Foundation

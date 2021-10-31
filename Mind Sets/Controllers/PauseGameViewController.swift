@@ -16,6 +16,8 @@ class PauseGameViewController: UIViewController {
     @IBOutlet weak var howToPlayButton: UIButton!
     @IBOutlet weak var newGameButton: UIButton!
     @IBOutlet weak var buttonsView: UIView!
+    @IBOutlet weak var backgroundArea: UIView!
+    @IBOutlet weak var popupView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +26,7 @@ class PauseGameViewController: UIViewController {
     
     //MARK: - Additional funcs
 
-    @IBAction func resumeGameButtonPressed(_ sender: UIButton) {
+    @IBAction func resumeGameButtonPressed(_ sender: Any) {
         NotificationCenter.default.post(name: Notification.Name.resumeGame, object: nil)
         self.dismiss(animated: true, completion: nil)
     }
@@ -37,6 +39,17 @@ class PauseGameViewController: UIViewController {
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
         NotificationCenter.default.post(name: Notification.Name.startOverNewGame, object: nil)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let firstTouch = touches.first {
+            let hitView = self.view.hitTest(firstTouch.location(in: self.view), with: event)
+
+            if hitView === backgroundArea {
+                print("touch is inside backgroundArea")
+                self.resumeGameButtonPressed(self)
+            }
+        }
     }
     
     private func setUpButtons() {
