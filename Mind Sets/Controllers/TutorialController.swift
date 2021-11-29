@@ -18,7 +18,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         let button = UIButton(type: .system)
         button.setTitle(Constants.prevButtonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(UIColor.mainGray, for: .normal)
         button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
         return button
@@ -28,7 +28,7 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         let button = UIButton(type: .system)
         button.setTitle(Constants.nextButtonTitle, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(UIColor.mainOrange, for: .normal)
         button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
@@ -96,10 +96,10 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         
         if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         } else {
             nextButton.setTitle(Constants.nextButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         }
     }
     
@@ -145,10 +145,10 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         
         if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         } else {
             nextButton.setTitle(Constants.nextButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         }
     }
     
@@ -167,10 +167,10 @@ class TutorialController: UICollectionViewController, UICollectionViewDelegateFl
         
         if (pageControl.currentPage == Constants.pages.count-1 && !isOpenedFromPopup) {
             nextButton.setTitle(Constants.playButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 19)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         } else {
             nextButton.setTitle(Constants.nextButtonTitle, for: .normal)
-            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+            nextButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         }
     }
     
